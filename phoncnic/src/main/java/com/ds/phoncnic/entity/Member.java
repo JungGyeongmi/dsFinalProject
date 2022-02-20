@@ -1,5 +1,6 @@
 package com.ds.phoncnic.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -19,15 +20,17 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = "characterLook")
+@ToString
 public class Member extends BaseEntity {
    
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long mno;
 
+    private String id;
     private String nickname;
     private String password;
 
-    @OneToMany
-    private List<CharacterLook> characterLook;
+    // @OneToMany
+    // private List<CharacterLook> characterLook = new ArrayList<>();
 }

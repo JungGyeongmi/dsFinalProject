@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +17,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString
+@ToString (exclude = "member")
 public class CharacterLook extends BaseEntity{
  
     @Id
@@ -25,4 +26,7 @@ public class CharacterLook extends BaseEntity{
 
     private String hair;
     private String clothes;
+
+    @ManyToOne
+    Member member;
 }
