@@ -31,6 +31,5 @@ public class Gallery extends BaseEntity {
     private String artistid;
    
     private String imagepath;
-
     
 }
