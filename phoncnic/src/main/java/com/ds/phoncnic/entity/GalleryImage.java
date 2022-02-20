@@ -1,9 +1,11 @@
 package com.ds.phoncnic.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +18,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString
+@ToString(exclude = "gallery")
 public class GalleryImage  extends BaseEntity{
     
     @Id
@@ -26,7 +28,9 @@ public class GalleryImage  extends BaseEntity{
     private String imagename;
     private String imagepath;
 
-    private Long gno;
-    private String artistid;
+    // private Long gno;
+    // private String artistid;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Gallery gallery;
     
 }
