@@ -1,5 +1,6 @@
 package com.ds.phoncnic.entity;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,12 +11,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+@Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @ToString
-public class dyning extends BaseEntity{
+public class Dyning extends BaseEntity{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long dno;
@@ -29,11 +32,5 @@ public class dyning extends BaseEntity{
     private String comment;
     private String backgoundimagepath;
     private String menuimagepath;
-
-
-
-
-
-    
 
 }

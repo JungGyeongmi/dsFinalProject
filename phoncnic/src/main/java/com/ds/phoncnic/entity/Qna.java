@@ -17,16 +17,16 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @ToString
-public class GalleryImage  extends BaseEntity{
+public class Qna extends BaseEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long gino;
+    private Long qno;
+    private String id;
+    private String title;
+    private String content;
+    private String password;
+    private String qtype;
+    private boolean answerstatus;
 
-    private String imagename;
-    private String imagepath;
-
-    private Long gno;
-    private String artistid;
-    
 }

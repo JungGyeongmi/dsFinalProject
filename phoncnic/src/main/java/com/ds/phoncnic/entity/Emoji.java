@@ -17,16 +17,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @ToString
-public class GalleryImage  extends BaseEntity{
+public class Emoji extends BaseEntity{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long gino;
+    private Long eno;
 
-    private String imagename;
-    private String imagepath;
+    private String emojitype;
 
-    private Long gno;
-    private String artistid;
-    
 }

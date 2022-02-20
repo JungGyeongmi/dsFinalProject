@@ -21,10 +21,10 @@ public class Member extends BaseEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long mno;
+
     private String id;
-
     private String nickname;
-    private long mno;
+    private String password;
 
-    
 }
