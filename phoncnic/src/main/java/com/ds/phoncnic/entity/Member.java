@@ -33,4 +33,5 @@ public class Member extends BaseEntity {
 
     // @OneToMany
     // private List<CharacterLook> characterLook = new ArrayList<>();
+    //왜 디버그로 돌아가는겨?
 }
