@@ -27,7 +27,7 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public PageResultDTO<MemberDTO, Member> getList(PageRequestDTO pageRequestDTO){
         //원하는 페이지 번호와 갯수를 정렬과 합께 초기화
-        Pageable pageable = pageRequestDTO.getPageable(Sort.by("regdate").descending());
+        Pageable pageable = pageRequestDTO.getPageable(Sort.by("regDate").descending());
         //result를 레파지토리 초기화된 pageable과 repository의 findAll메서드를 통해 담음
 
         Page<Member> result = memberRepository.findAll(pageable);//Querydsl 사용
