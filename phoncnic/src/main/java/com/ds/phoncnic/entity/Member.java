@@ -1,8 +1,6 @@
 package com.ds.phoncnic.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
@@ -21,9 +19,7 @@ public class Member extends BaseEntity {
    
     @Id
     private String id;
-    
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long mno;
+  
     private String nickname;
     private String password;
 

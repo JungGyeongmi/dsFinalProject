@@ -1,5 +1,8 @@
 package com.ds.phoncnic.controller;
 
+import com.ds.phoncnic.dto.PageRequestDTO;
+import com.ds.phoncnic.service.MemberService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,16 +13,18 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Controller
+@RequestMapping("/member")
 public class TestController {
-    
-    // private final MemberRepository memberRepository;
 
-    @GetMapping
-    public String testMember(Model model) {
+    MemberService memberService;
 
-        // memberDTO member = memberRepository.
+    @GetMapping("/listTest")
+    public String testMember(Model model, PageRequestDTO pageRequestDTO) {
+        
+      
+        log.info("list.............");
+        model.addAttribute("memberDTO", memberService.getList(pageRequestDTO));
 
-        // model.addAttribute("memberList", member);
-        return "/test/member";
+        return "/member/listTest";
     }
 }

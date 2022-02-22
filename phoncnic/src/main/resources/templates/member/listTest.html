@@ -8,8 +8,8 @@
 </head>
 <body>
     <ul>
-        <li >
-
+        <li th:each="dto : ${memberDTO}">
+            [[${dto}]]
         </li>
     </ul>
 </body>
