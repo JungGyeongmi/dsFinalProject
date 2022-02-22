@@ -38,6 +38,8 @@ public class MemberRepositoryTests {
         );
 
     }
+
+    
     /* 페이징테스트 */
     @Test
     public void testList() {
