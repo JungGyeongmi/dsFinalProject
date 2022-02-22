@@ -1,9 +1,11 @@
 package com.ds.phoncnic.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,15 +18,21 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString
+@ToString(exclude = {"follower", "dyning", "gallery"})
 public class Follow {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long fno;
-
-    private String follower;
-    private Boolean streettype;
-    private Long tno;
     private String followid;
+
+    @ManyToOne
+    private Member follower;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Dyning dyning;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Gallery gallery;
+    
 }

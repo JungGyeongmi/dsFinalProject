@@ -9,7 +9,6 @@ import lombok.extern.log4j.Log4j2;
 
 
 @Log4j2
-@RequestMapping(value="/test")
 @Controller
 public class TestController {
     
@@ -21,6 +20,6 @@ public class TestController {
         // memberDTO member = memberRepository.
 
         // model.addAttribute("memberList", member);
-        return "member";
+        return "/test/member";
     }
 }

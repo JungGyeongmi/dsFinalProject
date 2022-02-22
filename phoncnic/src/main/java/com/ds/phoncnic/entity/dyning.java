@@ -28,7 +28,6 @@ public class Dyning extends BaseEntity{
     private String dyningname;
     private long roofdesign;
     private String location;
-    private boolean streettype;
     private long foodtype;
     private String businesshours;
     private String comment;

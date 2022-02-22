@@ -28,7 +28,6 @@ public class Gallery extends BaseEntity {
 
     private String title;
     private String  content;
-    private boolean streettype;
     private boolean imagetype;
    
     private String imagepath;

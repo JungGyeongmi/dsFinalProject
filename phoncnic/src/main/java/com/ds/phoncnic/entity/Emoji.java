@@ -1,6 +1,7 @@
 package com.ds.phoncnic.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,7 +18,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = "member")
+@ToString(exclude = {"member", "dyning", "gallery"})
 public class Emoji extends BaseEntity{
     
     @Id
@@ -29,4 +30,9 @@ public class Emoji extends BaseEntity{
     @ManyToOne
     private Member member;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Dyning dyning;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Gallery gallery;
 }
