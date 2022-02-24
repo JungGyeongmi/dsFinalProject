@@ -25,7 +25,7 @@ public class GalleryImage  extends BaseEntity{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long gno;
+    private Long gino;
 
     private String imagename;
     private String imagepath;
