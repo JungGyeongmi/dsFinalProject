@@ -38,5 +38,6 @@ public class Gallery extends BaseEntity {
     private Member artistid;
 
     @OneToOne
+    @JoinColumn(name= "image_gino")
     private GalleryImage image;
 }

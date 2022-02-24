@@ -25,7 +25,7 @@ public class GalleryImage  extends BaseEntity{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long gno;
+    private Long gino;
 
     private String imagename;
     private String imagepath;
@@ -35,8 +35,7 @@ public class GalleryImage  extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
-    @OneToOne
-    @JoinColumn(name = "gno")
+    @OneToOne(mappedBy = "image")
     private Gallery gallery;
     
 }
