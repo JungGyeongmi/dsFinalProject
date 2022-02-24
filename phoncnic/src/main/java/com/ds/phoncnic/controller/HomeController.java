@@ -17,34 +17,34 @@ public class HomeController {
 
     // 생각해보니까 이게 다 기존 url이랑 달라서 redirect해줘야 할듓..
     // 아닐시 수정하겠슴
-    @RequestMapping("/crossroad")
-    @GetMapping("/gallery")
-    public String toGallery() {
-        log.info("gallery.......");
-        return "redircet:/gallery/list";
-    }
+    // @RequestMapping("/crossroad")
+    // @GetMapping("/gallery")
+    // public String toGallery() {
+    //     log.info("gallery.......");
+    //     return "redircet:/gallery/list";
+    // }
 
-    @RequestMapping("/crossroad")
-    @GetMapping("/restaurant")
-    public String toRestaurant() {
-        log.info("restaurant.......");
-        return "redirect:/dyning/restaurant";
-    }
+    // @RequestMapping("/crossroad")
+    // @GetMapping("/restaurant")
+    // public String toRestaurant() {
+    //     log.info("restaurant.......");
+    //     return "redirect:/dyning/restaurant";
+    // }
 
-    @RequestMapping("/crossroad")
-    @GetMapping("/cafe")
-    public String toCafe() {
-        log.info("cafe.......");
-        return "redirect:/dyning/cafe";
-    }
+    // @RequestMapping("/crossroad")
+    // @GetMapping("/cafe")
+    // public String toCafe() {
+    //     log.info("cafe.......");
+    //     return "redirect:/dyning/cafe";
+    // }
 
-    // REGISTER PAGE
-    @RequestMapping("/register")
-    @GetMapping("/gallery")
-    public String toRegisterGallery() {
-        log.info("gallery register.......");
-        return "redirect:/gallery/register";
-    }
+    // // REGISTER PAGE
+    // @RequestMapping("/register")
+    // @GetMapping("/gallery")
+    // public String toRegisterGallery() {
+    //     log.info("gallery register.......");
+    //     return "redirect:/gallery/register";
+    // }
 
 
 }

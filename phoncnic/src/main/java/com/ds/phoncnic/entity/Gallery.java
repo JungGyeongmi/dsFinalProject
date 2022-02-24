@@ -37,6 +37,6 @@ public class Gallery extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Member artistid;
 
-    @OneToOne(mappedBy = "gallery_image")
+    @OneToOne
     private GalleryImage image;
 }
