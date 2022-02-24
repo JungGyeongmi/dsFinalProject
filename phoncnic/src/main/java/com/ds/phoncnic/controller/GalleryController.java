@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.log4j.Log4j2;
-<<<<<<< Updated upstream
-import org.springframework.web.bind.annotation.RequestParam;
-
-=======
->>>>>>> Stashed changes
 
 @Controller
 @RequestMapping("/gallery")
@@ -28,7 +23,6 @@ public class GalleryController {
     @GetMapping("/")
     public String register() {
         
-<<<<<<< Updated upstream
         return "/register/register"; // 문제부분 register폴더의 register 파일
     }
 
@@ -58,14 +52,5 @@ public class GalleryController {
         // save 
         log.info("removed......");//삭제된 이미지번호
         return "redirect:/register/list";
-=======
-        return "/register/register";
-    }
-
-    @PostMapping("/")
-    public String register(Model model) {
-        
-        return "redirect:/gallery/register/list";
->>>>>>> Stashed changes
     }
 }
