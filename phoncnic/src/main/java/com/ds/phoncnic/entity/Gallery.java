@@ -41,6 +41,6 @@ public class Gallery extends BaseEntity {
     private Member artistid;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name= "image_gno", referencedColumnName = "gno")
+    @JoinColumn(name= "image_gno", referencedColumnName = "gno", nullable = false)
     private GalleryImage image;
 }
