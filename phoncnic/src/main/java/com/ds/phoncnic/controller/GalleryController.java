@@ -92,7 +92,7 @@ public class GalleryController {
         gallery.setImage(galleryImage);
         // gallery.setContent(galleryCt);
 
-        galleryImageRepository.save(galleryImage);
+        // galleryImageRepository.save(galleryImage);
         galleryRepository.save(gallery);
 
 
