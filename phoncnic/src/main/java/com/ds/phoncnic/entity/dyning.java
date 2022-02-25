@@ -19,7 +19,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @ToString(exclude = "ceoid")
-public class Dyning extends BaseEntity{
+public class Dyning extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
