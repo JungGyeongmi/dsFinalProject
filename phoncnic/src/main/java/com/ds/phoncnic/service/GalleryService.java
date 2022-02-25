@@ -1,8 +1,6 @@
 package com.ds.phoncnic.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.ds.phoncnic.dto.GalleryDTO;
