@@ -7,39 +7,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.log4j.Log4j2;
-<<<<<<< Updated upstream
-import org.springframework.web.bind.annotation.RequestParam;
 
-=======
->>>>>>> Stashed changes
 
 @Controller
 @RequestMapping("/gallery")
 @Log4j2
 public class GalleryController {
-    
-    @GetMapping("/list")
-    public String galleryRegister(Model model) {
+    //전시회 관람 페이지
+    @GetMapping("/")
+    public String gallerySetting(Model model) {
 
         // model.addAttribute("ImgDTO", arg1)
-        return "/register/list";
+        return "/setting/";
     }
 
-    @GetMapping("/")
+    @GetMapping("/setting/register")
     public String register() {
         
-<<<<<<< Updated upstream
-        return "/register/register"; // 문제부분 register폴더의 register 파일
+        return "/setting/register"; 
     }
 
-    @PostMapping("/")
+    @PostMapping("/setting/register")
     public String register(Model model) { // Ino 넘겨받기
         // Ino 넘겨받아서 repository save
         log.info("register gallery image ...... "); // Ino 추가
-        return "redirect:/register/list";
+        return "redirect:/setting";
     }
 
-    @GetMapping("/read")
+    @GetMapping("/setting/read")
     public String read() {
         log.info("register read.......");
         return "/read";
@@ -58,14 +53,5 @@ public class GalleryController {
         // save 
         log.info("removed......");//삭제된 이미지번호
         return "redirect:/register/list";
-=======
-        return "/register/register";
-    }
-
-    @PostMapping("/")
-    public String register(Model model) {
-        
-        return "redirect:/gallery/register/list";
->>>>>>> Stashed changes
     }
 }
