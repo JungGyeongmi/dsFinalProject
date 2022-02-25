@@ -26,32 +26,31 @@ public class GalleryRepositoryTests {
     public void insertDummise(){
 
         IntStream.rangeClosed(1, 10).forEach(i->{
+            boolean rand = ((int)(Math.random()*2))!=0;
+
             Member member = 
                 Member.builder().id(
                     memberRepository.findById("user"+i+"@icloud.com").get().getId()
                 )
-                .build();
+            .build();
 
             GalleryImage galleryImage = GalleryImage.builder()
                 .imagename("imagename"+i)
                 .imagepath(i+"imagepath.jpg")
                 .member(member)
             .build(); 
-            galleryImageRepository.save(galleryImage);
             
-            boolean rand = ((int)(Math.random()*2))!=0;
             Gallery gallery = Gallery.builder()
-            .title(i+"title")
-            .content(i+"content")
-            .imagetype(rand)
-            .imagepath(galleryImage.getImagepath())
-            .artistid(member)
-            .image(galleryImage)
+                .title(i+"title")
+                .content(i+"content")
+                .imagetype(rand)
+                .imagepath(galleryImage.getImagepath())
+                .artistid(galleryImage.getMember())
+                .image(galleryImage)
             .build();
 
             galleryRepository.save(gallery);
-
-
+            galleryImageRepository.save(galleryImage);
         }
         );
 
