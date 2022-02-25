@@ -1,17 +1,5 @@
-package com.ds.phoncnic.controller;
+package com.ds.phoncnic.controller.galleryRestController;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
-
-// @RestController
-// @Log4j2
-// @RequiredArgsConstructor
-// @RequestMapping("/gallerydetails")
-//public class GalleryRestController {
+public class GalleryDetailsRestController {
     
-//     @GetMapping("/{gno}")
-//     public ResponseEntity<List<GalleryDTO>>getList
 }
