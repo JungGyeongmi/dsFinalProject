@@ -1,6 +1,10 @@
 package com.ds.phoncnic.controller;
 
+import com.ds.phoncnic.dto.PageRequestDTO;
+import com.ds.phoncnic.service.GalleryService;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,7 +18,7 @@ import lombok.extern.log4j.Log4j2;
 public class GalleryController {
 
     // private final MemberRepository memberRepository;
-    // private final GalleryRepository galleryRepository;
+    private final GalleryService galleryService;
 
     //사진전 / 그림전 선택페이지
     @GetMapping("/crossgallery")
@@ -46,6 +50,13 @@ public class GalleryController {
         return "gallery/painting";
     }
     
+    @GetMapping("/list")
+    public String list(PageRequestDTO pageRequestDTO, Model model) {
+
+        model.addAttribute("result", galleryService.getList(pageRequestDTO));
+
+        return "/gallery/list";
+    }
 
     // 데이터 수정 테스트
     /*
