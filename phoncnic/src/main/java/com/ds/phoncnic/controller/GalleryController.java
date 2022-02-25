@@ -1,8 +1,12 @@
 package com.ds.phoncnic.controller;
 
+import com.ds.phoncnic.dto.GalleryDTO;
 import com.ds.phoncnic.dto.PageRequestDTO;
 import com.ds.phoncnic.entity.Gallery;
+import com.ds.phoncnic.entity.GalleryImage;
+import com.ds.phoncnic.repository.GalleryImageRepository;
 import com.ds.phoncnic.repository.GalleryRepository;
+import com.ds.phoncnic.service.GalleryImageService;
 import com.ds.phoncnic.service.GalleryService;
 
 import org.springframework.stereotype.Controller;
@@ -23,6 +27,7 @@ public class GalleryController {
 
     private final GalleryService galleryService;
     private final GalleryRepository galleryRepository;
+    private final GalleryImageRepository galleryImageRepository;
 
     //전시회 관람 페이지
     @GetMapping("/list")
@@ -34,19 +39,31 @@ public class GalleryController {
     }
 
     @PostMapping("/list")
-    public String list(RedirectAttributes rd, String galleryCt,  PageRequestDTO pageRequestDTO){
+    public String list(RedirectAttributes rd, String galleryCt, GalleryDTO GDTO, PageRequestDTO pageRequestDTO){
         log.info("변경할 값"+galleryCt);
-        log.info("modify list.....");
+        log.info("modify list....."+GDTO);
+
+        // Gallery gallery = Gallery.builder()
+        //     .gno(10L)
+        // .build();
+        // gallery.setTitle(galleryCt);
 
         Gallery gallery = Gallery.builder()
-            .gno(10L)
+        .gno(10L)
         .build();
-        gallery.setTitle(galleryCt);
+        GalleryImage galleryImage = GalleryImage.builder()
+            .gno(10L)
+            .build();
+        gallery.setImage(galleryImage);
+        gallery.setContent(galleryCt);
 
-        rd.addAttribute("keyword", pageRequestDTO.getKeyword());
-
-
+        galleryImageRepository.save(galleryImage);
         galleryRepository.save(gallery);
+
+
+        // rd.addAttribute("keyword", pageRequestDTO.getKeyword());
+
+
 
         return "redirect:/";
     }
