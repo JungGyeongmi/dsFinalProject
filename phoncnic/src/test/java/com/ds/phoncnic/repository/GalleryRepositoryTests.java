@@ -37,7 +37,7 @@ public class GalleryRepositoryTests {
             GalleryImage galleryImage = GalleryImage.builder()
                 .imagename("imagename"+i)
                 .imagepath(i+"imagepath.jpg")
-                .member(member)
+                .artistid(member.getId())
             .build(); 
             
             Gallery gallery = Gallery.builder()
@@ -45,14 +45,14 @@ public class GalleryRepositoryTests {
                 .content(i+"content")
                 .imagetype(rand)
                 .imagepath(galleryImage.getImagepath())
-                .artistid(galleryImage.getMember())
+                .artistid(member)
             .build();
 
             gallery.setImage(galleryImage);
             galleryImage.setGallery(gallery);
 
-            galleryRepository.save(gallery);
             galleryImageRepository.save(galleryImage);
+            galleryRepository.save(gallery);
         }
         );
 
