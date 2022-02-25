@@ -33,6 +33,7 @@ public class Dyning extends BaseEntity {
     private String comment;
     private String backgoundimagepath;
     private String menuimagepath;
+    private String hashtag;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Member ceoid;
