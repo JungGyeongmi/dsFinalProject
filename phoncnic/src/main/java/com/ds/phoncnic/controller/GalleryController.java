@@ -31,14 +31,37 @@ public class GalleryController {
     private final GalleryRepository galleryRepository;
     private final GalleryImageRepository galleryImageRepository;
 
-    //전시회 관람 페이지
-    @GetMapping("/list")
-    public String list(Model model, PageRequestDTO pageRequestDTO){
-        log.info("gallery list........................");
-
-        model.addAttribute("result", galleryService.getList(pageRequestDTO));
-        return "gallery/list";
+    //사진전 / 그림전 선택페이지
+    @GetMapping("/crossgallery")
+    public String crossgallery(){
+        return "gallery/crossgallery";
     }
+
+    //사진전 선택시
+    @GetMapping("/crossgallery/photo")
+    public String crossgalleryPhoto(){
+        return "redirect:/gallery/photo";
+    }
+
+    //그림전 선택시
+    @GetMapping("/crossgallery/painting")
+    public String crossgalleryPainting(){
+        return "redirect:/gallery/painting";
+    }
+
+    //사진전 상세페이지
+    @GetMapping("/photo")
+    public String photo(){
+        return "gallery/photo";
+    }
+
+    //그림전 상세페이지
+    @GetMapping("/painting")
+    public String painting(){
+        return "gallery/painting";
+    }
+    
+
 
     @PostMapping("/list")
     public String list(RedirectAttributes rd, String galleryCt, PageRequestDTO pageRequestDTO){
