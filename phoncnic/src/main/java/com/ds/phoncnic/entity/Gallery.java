@@ -1,5 +1,6 @@
 package com.ds.phoncnic.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = "artistid")
+@ToString(exclude = {"artistid", "image"})
 public class Gallery extends BaseEntity {
 
     @Id
@@ -37,7 +38,7 @@ public class Gallery extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Member artistid;
 
-    @OneToOne
-    @JoinColumn(name= "image_gino")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name= "image_gno", referencedColumnName = "gno")
     private GalleryImage image;
 }
