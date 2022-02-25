@@ -14,36 +14,43 @@ public class HomeController {
         return "index";
     }
 
-    // 생각해보니까 이게 다 기존 url이랑 달라서 redirect해줘야 할듓..
-    // 아닐시 수정하겠슴
-    // @RequestMapping("/crossroad")
-    // @GetMapping("/gallery")
-    // public String toGallery() {
-    //     log.info("gallery.......");
-    //     return "redircet:/gallery/list";
-    // }
+    @GetMapping("/crossroad")
+    public String crossroad(){
+        return "crossroad";
+    }
 
-    // @RequestMapping("/crossroad")
-    // @GetMapping("/restaurant")
-    // public String toRestaurant() {
-    //     log.info("restaurant.......");
-    //     return "redirect:/dyning/restaurant";
-    // }
+    @GetMapping("/crossroad/gallery")
+    public String toGalleryCrossroad() {
 
-    // @RequestMapping("/crossroad")
-    // @GetMapping("/cafe")
-    // public String toCafe() {
-    //     log.info("cafe.......");
-    //     return "redirect:/dyning/cafe";
-    // }
+        return "redirect:/gallery/crossroad";
+    }
+    
+    @GetMapping("/crossroad/restaurant")
+    public String toRestaurantCrossroad() {
 
-    // // REGISTER PAGE
-    // @RequestMapping("/register")
-    // @GetMapping("/gallery")
-    // public String toRegisterGallery() {
-    //     log.info("gallery register.......");
-    //     return "redirect:/gallery/register";
-    // }
+        return "redirect:/dyning/restaurant";
+    }
 
+    @GetMapping("/crossroad/cafe")
+    public String toCafeCrossroad() {
 
+        return "redirect:/dyning/cafe";
+    }
+
+    @GetMapping("/setting")
+    public String setting(){
+        return "setting";
+    }
+
+    @GetMapping("/gallery/setting")
+    public String toGallerySetting() {
+
+        return "redirect:/gallery/setting";
+    }
+
+    @GetMapping("/dyning/setting")
+    public String toDyningSetting() {
+
+        return "redirect:/dyning/setting";
+    }
 }
