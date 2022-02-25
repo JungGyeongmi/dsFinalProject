@@ -1,20 +1,5 @@
 package com.ds.phoncnic.controller;
 
-import com.ds.phoncnic.dto.PageRequestDTO;
-import com.ds.phoncnic.entity.Gallery;
-import com.ds.phoncnic.entity.GalleryImage;
-import com.ds.phoncnic.repository.GalleryRepository;
-import com.ds.phoncnic.repository.MemberRepository;
-import com.ds.phoncnic.service.GalleryService;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 
 @Controller
 @RequestMapping("/gallery")
@@ -42,6 +27,34 @@ public class GalleryController {
     @GetMapping("/crossgallery/painting")
     public String crossgalleryPainting(){
         return "redirect:/gallery/painting";
+
+    }
+    
+    //전시회 관람 페이지
+    @GetMapping("/")
+    public String gallerySetting(Model model) {
+
+        // model.addAttribute("ImgDTO", arg1)
+        return "/setting/";
+    }
+
+    @GetMapping("/setting/register")
+    public String register() {
+        
+        return "/setting/register"; 
+    }
+
+    @PostMapping("/setting/register")
+    public String register(Model model) { // Ino 넘겨받기
+        // Ino 넘겨받아서 repository save
+        log.info("register gallery image ...... "); // Ino 추가
+        return "redirect:/setting";
+    }
+
+    @GetMapping("/setting/read")
+    public String read() {
+        log.info("register read.......");
+        return "/read";
     }
 
     //사진전 상세페이지
@@ -88,6 +101,13 @@ public class GalleryController {
         gallery.setImage(galleryImage);
         galleryRepository.save(gallery);
         return "redirect:/gallery/list";
+    }
+
+    @PostMapping("/read/remove")
+    public String remove() {
+        // save 
+        log.info("removed......");//삭제된 이미지번호
+        return "redirect:/register/list";
     }
     
 }
