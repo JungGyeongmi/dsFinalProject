@@ -46,8 +46,10 @@ public class GalleryRepositoryTests {
                 .imagetype(rand)
                 .imagepath(galleryImage.getImagepath())
                 .artistid(galleryImage.getMember())
-                .image(galleryImage)
             .build();
+
+            gallery.setImage(galleryImage);
+            galleryImage.setGallery(gallery);
 
             galleryRepository.save(gallery);
             galleryImageRepository.save(galleryImage);
