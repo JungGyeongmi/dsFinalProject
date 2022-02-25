@@ -1,6 +1,8 @@
 package com.ds.phoncnic.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.ds.phoncnic.dto.GalleryDTO;
@@ -12,10 +14,12 @@ import com.ds.phoncnic.entity.GalleryImage;
 import com.ds.phoncnic.entity.Member;
 
 public interface GalleryService {
-    PageResultDTO<GalleryDTO, Gallery> getList(PageRequestDTO PageRequestDTO);
+    PageResultDTO<GalleryDTO, Object[]> getList(PageRequestDTO PageRequestDTO);
 
     default Gallery dtoToEntity(GalleryDTO galleryDTO) {
       
+        // Map<String, Object> entityMap = new HashMap<>();
+
         Gallery gallery = Gallery.builder()
         .gno(galleryDTO.getGno())
         .title(galleryDTO.getTitle())
@@ -27,8 +31,12 @@ public interface GalleryService {
             .id(galleryDTO.getId())
             .build()
         )
-        // .image(galleryDTO.getGalleryimageDTOList())
+        .image(GalleryImage.builder()
+            .gno(galleryDTO.getGno())
+            .build())
         .build();
+        
+        // entityMap.put("gallery", gallery);
 
         return gallery;
     }
@@ -56,6 +64,8 @@ public interface GalleryService {
             .modDate(gallery.getModDate())
             // .galleryimageDTOList(gallery.getImage())
             .build();
+
+            galleryDTO.setGalleryimageDTOList(galleryImagyDTOList);
 
             return galleryDTO;
         }
