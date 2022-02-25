@@ -15,9 +15,8 @@
     </ul>
 
     <form th:action="@{/gallery/list}" method="POST">
-        <input type="text" th:value="${result.dtoList[0].title}" name="galleryCt">
-        <input type="text" value="" name="">
-        <input type="hidden" th:value="${result.dtoList}" name="GDTO">
+        <input type="text" th:value="${result.dtoList[0].content}" name="galleryCt">
+        <!-- <input type="hidden" th:value="${result.dtoList}" name="GDTO"> -->
         <input type="submit" value="modify">
     </form>
 

@@ -57,6 +57,7 @@ public interface GalleryService {
         GalleryDTO galleryDTO = GalleryDTO.builder()
             .gno(gallery.getGno())
             .title(gallery.getTitle())
+            .content(gallery.getContent())
             .imagetype(gallery.isImagetype())
             .imagepath(gallery.getImagepath())
             .id(gallery.getArtistid().getId())
