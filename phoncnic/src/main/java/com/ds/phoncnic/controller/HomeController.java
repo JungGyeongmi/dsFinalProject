@@ -14,5 +14,21 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/main/companyinfo")
+    public String companyinfo() {
+        return "/main/companyinfo";
+    }
+
+    @GetMapping("/main/help")
+    public String help() {
+        return "/main/help";
+    }
+
+    @GetMapping("/main/mypage")
+    public String mypage() {
+        return "/main/mypage";
+    }
+
+
 
 }
