@@ -14,6 +14,8 @@ public class HomeController {
         return "index";
     }
 
+
+
     // 생각해보니까 이게 다 기존 url이랑 달라서 redirect해줘야 할듓..
     // 아닐시 수정하겠슴
     // @RequestMapping("/crossroad")
