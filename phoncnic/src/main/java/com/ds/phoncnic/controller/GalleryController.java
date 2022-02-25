@@ -26,10 +26,8 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class GalleryController {
 
-    private final GalleryService galleryService;
     private final MemberRepository memberRepository;
     private final GalleryRepository galleryRepository;
-    private final GalleryImageRepository galleryImageRepository;
 
     //사진전 / 그림전 선택페이지
     @GetMapping("/crossgallery")

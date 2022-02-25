@@ -1,4 +1,4 @@
-package com.ds.phoncnic.controller.register;
+package com.ds.phoncnic.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,30 +10,31 @@ import lombok.extern.log4j.Log4j2;
 
 @Controller
 @Log4j2
-@RequestMapping("/gallery/register/")
-public class GalleryRegisterController {
-    @GetMapping("/list")
-    public void galleryRegister(Model model) {
+@RequestMapping("/gallery/setting")
+public class GallerySettingController {
+    @GetMapping({"/", ""})
+    public void gallerySetting(Model model) {
 
         // model.addAttribute("ImgDTO", arg1)
     }
 
-    @GetMapping({"/", ""})
+    @GetMapping("/register")
     public String register() {
         
-        return "/register"; // 문제부분 register폴더의 register 파일
+        return "gallery/setting/register";
     }
 
-    @PostMapping({"/", ""})
+    @PostMapping("/register")
     public String register(Model model) { // Ino 넘겨받기
         // Ino 넘겨받아서 repository save
         log.info("register gallery image ...... "); // Ino 추가
-        return "redirect:/list";
+        return "redirect:/gallery/setting/";
     }
 
     @GetMapping("/read")
-    public void read() {
+    public String read() {
         log.info("register read.......");
+        return "gallery/setting/read";
     }
 
 
@@ -41,13 +42,13 @@ public class GalleryRegisterController {
     public String modify(){
         // save
         log.info("modified......");//수정된 이미지번호
-        return "redirect:/read"; 
+        return "redirect:/gallery/setting/read"; 
     }
 
     @PostMapping("/read/remove")
     public String remove() {
-        // save 
+        // remove
         log.info("removed......");//삭제된 이미지번호
-        return "redirect:/list";
+        return "redirect:/gallery/setting/";
     }
 }
