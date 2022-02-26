@@ -2,4 +2,10 @@
 <html lang="ko" xmls:th="http://www.thymeleaf.org">
 
     <h1>mypage</h1>
+    <ul th:each="dto:${myPageDTO}">
+        <li th:text="dto">
+
+        </li>
+    </ul>
+    
 </html>

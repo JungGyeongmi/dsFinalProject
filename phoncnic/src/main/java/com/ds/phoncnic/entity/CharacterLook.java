@@ -1,6 +1,8 @@
 package com.ds.phoncnic.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,6 +29,6 @@ public class CharacterLook extends BaseEntity{
     private String hair;
     private String clothes;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     Member member;
 }

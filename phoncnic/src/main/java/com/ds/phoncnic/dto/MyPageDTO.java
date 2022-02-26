@@ -1,21 +1,17 @@
 package com.ds.phoncnic.dto;
 
-import java.time.LocalDateTime;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class MemberDTO {
+@NoArgsConstructor
+@Data
+public class MyPageDTO {
     private String id;
     private String nickname;
-    private String password;
-    private LocalDateTime regdate, moddate;
-
-    
+    private String hair;
+    private String clothes;
 }

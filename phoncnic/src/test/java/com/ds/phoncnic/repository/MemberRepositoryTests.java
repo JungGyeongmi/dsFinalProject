@@ -1,5 +1,6 @@
 package com.ds.phoncnic.repository;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import com.ds.phoncnic.dto.MemberDTO;
@@ -57,4 +58,22 @@ public class MemberRepositoryTests {
             System.out.println(memberDTO);
         }
     }
+
+    // @Test
+    // public void testGetmypage(){
+    //     String ii = "user10@icloud.com";
+    //     List<Object[]> result = repository.getmypage(ii);
+    //     for(Object[] arr : result){
+    //         System.out.println(Arrays.toString(arr));
+    //     }
+    // }
+
+
+//     @Test
+//     public void testGetmypage() {
+//         String ii = "user10@icloud.com";
+//    Object result = repository.getmypage(ii);
+//    Object[] arr = (Object[])result;
+//    System.out.println(Arrays.toString(arr));
+//  }
 }

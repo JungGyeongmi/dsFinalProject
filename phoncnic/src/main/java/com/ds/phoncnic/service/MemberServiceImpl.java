@@ -13,9 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import lombok.extern.log4j.Log4j2;
-
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 @Service
 @RequiredArgsConstructor
@@ -37,5 +36,13 @@ public class MemberServiceImpl implements MemberService {
         return new PageResultDTO<>(result, fn);        
         
     }
+    
+    // @Override
+    // public MyPageDTO get(String id){
+    //         Object result = memberRepository.getmypage(id);
+    //         Object[] arr = (Object[]) result;
+    //         return entityToMyPageDTO((Member)arr[0],(Member)arr[1],(CharacterLook)arr[2],(CharacterLook)arr[3]);
+
+    // }
         
 }
