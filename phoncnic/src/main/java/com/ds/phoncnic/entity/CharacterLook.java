@@ -29,6 +29,6 @@ public class CharacterLook extends BaseEntity{
     private String hair;
     private String clothes;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     Member member;
 }

@@ -10,9 +10,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface CharacterLookRepository extends JpaRepository<CharacterLook,Long>{
-   @Query(value="select * from character_look ch where lno = 1",
+   @Query(value="select * from character_look ch where ch.member_id = :id",
    nativeQuery = true)
-    Optional<CharacterLook> getCharacterLook();
+    Optional<CharacterLook> getCharacterLook(String id);
 
     // @Query("select m.id,nickname,hair,clothes from Member m join  CharacterLook ch on m.id=ch.id where m.id=:id")
     // Object getCharacterLook(String id);

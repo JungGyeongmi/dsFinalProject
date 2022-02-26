@@ -51,9 +51,9 @@ public class CharacterLookRepositoryTests {
 
     @Test
     public void testGetCharacterLook(){
-        Optional<CharacterLook> result = repository.getCharacterLook();
+        Optional<CharacterLook> result = repository.getCharacterLook("user10@icloud.com");
         CharacterLook characterLook = result.get();
-        System.out.println(characterLook);
+        System.out.println(characterLook.getMember().getId());
         System.out.println(characterLook.getHair());
         System.out.println(characterLook.getClothes());
     }
