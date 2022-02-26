@@ -1,10 +1,10 @@
 package com.ds.phoncnic.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -29,12 +29,9 @@ public class DyningImage {
     private String menuimagepath;
     private String backgroundname;
     private String backgroundpath;
-    
-    // private String ceoid;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "dyning_dno")
     private Dyning dyning;
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // private Dyning dno;
 }

@@ -1,18 +1,5 @@
 package com.ds.phoncnic.service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import com.ds.phoncnic.dto.DyningDTO;
-import com.ds.phoncnic.dto.DyningImageDTO;
-import com.ds.phoncnic.dto.PageRequestDTO;
-import com.ds.phoncnic.dto.PageResultDTO;
-import com.ds.phoncnic.entity.Dyning;
-import com.ds.phoncnic.entity.DyningImage;
-import com.ds.phoncnic.entity.Member;
-
 public interface DyningService {
 
     // PageResultDTO<DyningDTO, Object[]> getList(PageRequestDTO pageRequestDTO);
