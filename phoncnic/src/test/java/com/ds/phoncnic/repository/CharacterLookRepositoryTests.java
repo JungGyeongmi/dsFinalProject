@@ -1,6 +1,7 @@
 package com.ds.phoncnic.repository;
 
 
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
@@ -51,12 +52,19 @@ public class CharacterLookRepositoryTests {
 
     @Test
     public void testGetCharacterLook(){
-        Optional<CharacterLook> result = repository.getCharacterLook();
+        Optional<CharacterLook> result = repository.getCharacterLook("user10@icloud.com");
         CharacterLook characterLook = result.get();
-        System.out.println(characterLook);
+        System.out.println(characterLook.getMember().getId());
         System.out.println(characterLook.getHair());
         System.out.println(characterLook.getClothes());
     }
+
+    @Test
+    public void TestGetMyPage() {
+   Object result = repository.getMypageData("user10@icloud.com");
+   Object[] arr = (Object[])result;
+   System.out.println(Arrays.toString(arr));
+ }
 
 //     @Test
 //     public void TestGetCharacterLook() {

@@ -9,7 +9,6 @@ import lombok.extern.log4j.Log4j2;
 
 @Controller
 @Log4j2
-@RequiredArgsConstructor
 public class HomeController {
     
     @GetMapping({"","/"})
@@ -27,12 +26,7 @@ public class HomeController {
         return "/main/help";
     }
 
-     @GetMapping("/main/mypage")
-    public String mypage() {
-        return "/main/mypage";
+     
     }
     
    
-
-
-}

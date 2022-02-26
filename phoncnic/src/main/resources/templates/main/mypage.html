@@ -2,9 +2,9 @@
 <html lang="ko" xmls:th="http://www.thymeleaf.org">
 
     <h1>mypage</h1>
-    <ul th:each="dto:${myPageDTO}">
-        <li th:text="dto">
-
+    <ul>
+        <li th:each="dto : ${myPageDTO}">
+            [[${dto}]]
         </li>
     </ul>
     
