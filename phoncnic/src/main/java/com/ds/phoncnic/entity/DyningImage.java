@@ -25,14 +25,16 @@ public class DyningImage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long dino;
     
-    // private Long ceoid;
-
     private String menuimagename;
     private String menuimagepath;
     private String backgroundname;
     private String backgroundpath;
+    
+    // private String ceoid;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Dyning dyning;
 
+    // @ManyToOne(fetch = FetchType.LAZY)
+    // private Dyning dno;
 }

@@ -1,5 +1,12 @@
 package com.ds.phoncnic.service;
 
-public class DyningImageServiceImpl {
+import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class DyningImageServiceImpl implements DyningImageService {
     
+    // private final DyningImageService dyningImageService;
 }
