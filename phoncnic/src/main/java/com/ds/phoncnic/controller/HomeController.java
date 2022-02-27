@@ -42,10 +42,5 @@ public class HomeController {
     @GetMapping("/main/help")
     public String help() {
         return "/main/help";
-    }
-
-
-     
-    }
-    
-   
+    }     
+}
