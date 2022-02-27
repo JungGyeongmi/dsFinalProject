@@ -13,9 +13,9 @@ import com.ds.phoncnic.entity.DyningImage;
 import com.ds.phoncnic.repository.DyningImageRepository;
 import com.ds.phoncnic.repository.DyningRepository;
 
-import org.hibernate.annotations.Sort;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
