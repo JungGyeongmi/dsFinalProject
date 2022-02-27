@@ -16,5 +16,8 @@ public class MemberDTO {
     private String nickname;
     private String password;
     private LocalDateTime regdate, moddate;
+    private Long hair;
+    private Long clothes;
+
     
 }
