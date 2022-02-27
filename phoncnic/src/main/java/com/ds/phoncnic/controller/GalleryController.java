@@ -1,5 +1,21 @@
 package com.ds.phoncnic.controller;
 
+import com.ds.phoncnic.dto.PageRequestDTO;
+import com.ds.phoncnic.entity.Gallery;
+import com.ds.phoncnic.entity.GalleryImage;
+import com.ds.phoncnic.repository.GalleryRepository;
+import com.ds.phoncnic.repository.MemberRepository;
+import com.ds.phoncnic.service.GalleryService;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 @Controller
 @RequestMapping("/gallery")
@@ -11,52 +27,32 @@ public class GalleryController {
     private final GalleryRepository galleryRepository;
     private final GalleryService galleryService;
 
+    @GetMapping({"/", ""})
+    public String galleryCrossroad() {
+
+        return "/gallery/crossgallery";
+    }
+
     //사진전 / 그림전 선택페이지
-    @GetMapping("/crossgallery")
-    public String crossgallery(){
-        return "gallery/crossgallery";
+    // @GetMapping("/crossgallery")
+    // public String crossgallery(){
+    //     return "gallery/crossgallery";
+    // }
+
+    // 그림전 및 사진전 선택
+    @GetMapping("/crossgallery/{choice}")
+    public String crossgalleryPhoto(@PathVariable("choice") String choice){
+        log.info("get"+choice+".......");
+        return "redirect:/gallery/"+choice;
     }
 
-    //사진전 선택시
-    @GetMapping("/crossgallery/photo")
-    public String crossgalleryPhoto(){
-        return "redirect:/gallery/photo";
-    }
-
-    //그림전 선택시
-    @GetMapping("/crossgallery/painting")
-    public String crossgalleryPainting(){
-        return "redirect:/gallery/painting";
-
-    }
+    /* 
+        상세페이지들은 전송해야할 데이터가 다르니까
+        합치는거는 고려해봐야할거같슈 아니면 합치고
+        삼항연산자 써서 photo일 경우에는 해당 자료값만 넘기는 식으로 해야할거 같슈
+        읽고나면 삭제 부탁드려용 ㅇ_<~*
+    */
     
-    //전시회 관람 페이지
-    @GetMapping("/")
-    public String gallerySetting(Model model) {
-
-        // model.addAttribute("ImgDTO", arg1)
-        return "/setting/";
-    }
-
-    @GetMapping("/setting/register")
-    public String register() {
-        
-        return "/setting/register"; 
-    }
-
-    @PostMapping("/setting/register")
-    public String register(Model model) { // Ino 넘겨받기
-        // Ino 넘겨받아서 repository save
-        log.info("register gallery image ...... "); // Ino 추가
-        return "redirect:/setting";
-    }
-
-    @GetMapping("/setting/read")
-    public String read() {
-        log.info("register read.......");
-        return "/read";
-    }
-
     //사진전 상세페이지
     @GetMapping("/photo")
     public String photo(){
@@ -68,8 +64,15 @@ public class GalleryController {
     public String painting(){
         return "gallery/painting";
     }
+
+
     
-    @GetMapping("/list")
+    /* 
+        테스트용 컨트롤러 
+    */
+
+    // 더미 DTO 출력 테스트 
+    @GetMapping({"/list"})
     public String list(PageRequestDTO pageRequestDTO, Model model) {
 
         model.addAttribute("result", galleryService.getList(pageRequestDTO));
@@ -78,7 +81,6 @@ public class GalleryController {
     }
 
     // 데이터 수정 테스트
-    
     @PostMapping("/list")
     public String list(String galleryCt){
         log.info("변경할 값"+galleryCt);
@@ -101,13 +103,6 @@ public class GalleryController {
         gallery.setImage(galleryImage);
         galleryRepository.save(gallery);
         return "redirect:/gallery/list";
-    }
-
-    @PostMapping("/read/remove")
-    public String remove() {
-        // save 
-        log.info("removed......");//삭제된 이미지번호
-        return "redirect:/register/list";
     }
     
 }
