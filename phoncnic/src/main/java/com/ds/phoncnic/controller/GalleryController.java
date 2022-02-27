@@ -27,6 +27,7 @@ public class GalleryController {
     private final GalleryRepository galleryRepository;
     private final GalleryService galleryService;
 
+    // 선택전 url 에서는 /gallery 로 표기
     @GetMapping({"/", ""})
     public String galleryCrossroad() {
 
@@ -64,8 +65,6 @@ public class GalleryController {
     public String painting(){
         return "gallery/painting";
     }
-
-
     
     /* 
         테스트용 컨트롤러 
