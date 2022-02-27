@@ -57,7 +57,6 @@ public interface GalleryService {
             .id(gallery.getArtistid().getId())
             .regDate(gallery.getRegDate())
             .modDate(gallery.getModDate())
-            // .galleryimageDTOList(gallery.getImage())
             .build();
 
             galleryDTO.setGalleryimageDTOList(galleryImagyDTOList);

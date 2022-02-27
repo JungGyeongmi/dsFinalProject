@@ -2,7 +2,6 @@ package com.ds.phoncnic.controller;
 
 import com.ds.phoncnic.dto.PageRequestDTO;
 import com.ds.phoncnic.repository.GalleryRepository;
-import com.ds.phoncnic.service.MemberService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +18,7 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/member")
 public class TestController {
 
-    private final MemberService memberService;
+    // private final MemberService memberService;
 
     private final GalleryRepository galleryRepository;
 

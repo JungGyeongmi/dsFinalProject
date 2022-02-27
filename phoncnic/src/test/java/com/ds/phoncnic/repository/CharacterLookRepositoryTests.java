@@ -1,8 +1,6 @@
 package com.ds.phoncnic.repository;
 
 
-import java.util.Arrays;
-import java.util.Optional;
 import java.util.stream.IntStream;
 
 import com.ds.phoncnic.entity.CharacterLook;

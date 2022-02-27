@@ -22,7 +22,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = {"gallery"})
+@ToString(exclude = {"artistid","gallery"})
 public class GalleryImage  extends BaseEntity{
     
     @Id
@@ -37,7 +37,6 @@ public class GalleryImage  extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     private Member artistid;
 
-    @OneToOne(mappedBy = "image", cascade = CascadeType.REMOVE)
+    @OneToOne(mappedBy = "image", cascade = CascadeType.ALL)
     private Gallery gallery;
-    
 }
