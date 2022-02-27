@@ -1,12 +1,8 @@
 package com.ds.phoncnic.service;
 
 import com.ds.phoncnic.dto.MemberDTO;
-import com.ds.phoncnic.dto.PageRequestDTO;
-import com.ds.phoncnic.dto.PageResultDTO;
 import com.ds.phoncnic.entity.CharacterLook;
 import com.ds.phoncnic.entity.Member;
-
-import org.springframework.stereotype.Component;
 
 
 public interface MemberService {

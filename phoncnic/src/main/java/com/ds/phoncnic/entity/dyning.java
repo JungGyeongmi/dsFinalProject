@@ -1,5 +1,8 @@
 package com.ds.phoncnic.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,13 +22,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = "ceoid")
+@ToString(exclude = {"ceoid", "image"})
 public class Dyning extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long dno;
-    private long dino;
+
     private String dyningname;
     private long roofdesign;
     private String location;
@@ -37,5 +40,6 @@ public class Dyning extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Member ceoid;
 
-
+    @OneToMany(mappedBy = "dyning", fetch = FetchType.LAZY)
+    List<DyningImage> image = new ArrayList<DyningImage>();
 }

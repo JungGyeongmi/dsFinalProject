@@ -1,9 +1,6 @@
 package com.ds.phoncnic.repository;
 
 
-import java.util.List;
-import java.util.Optional;
-
 import com.ds.phoncnic.entity.CharacterLook;
 
 import org.springframework.data.jpa.repository.JpaRepository;
