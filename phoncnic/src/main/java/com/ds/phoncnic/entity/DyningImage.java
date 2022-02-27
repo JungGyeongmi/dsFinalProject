@@ -1,6 +1,7 @@
 package com.ds.phoncnic.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,7 +31,7 @@ public class DyningImage {
     private String backgroundname;
     private String backgroundpath;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dyning_dno")
     private Dyning dyning;
 

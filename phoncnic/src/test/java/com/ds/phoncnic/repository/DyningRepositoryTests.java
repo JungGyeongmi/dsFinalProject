@@ -1,5 +1,7 @@
 package com.ds.phoncnic.repository;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import com.ds.phoncnic.entity.Dyning;
@@ -9,6 +11,10 @@ import com.ds.phoncnic.entity.Member;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 @SpringBootTest
 public class DyningRepositoryTests {
@@ -16,14 +22,12 @@ public class DyningRepositoryTests {
     @Autowired
     DyningRepository dyningRepository;
 
+    @Autowired
+    DyningImageRepository dyningImageRepository;
+
     // @Autowired
     // MemberRepository memberRepository;
 
-    // @Autowired
-    // DyningImageRepository dyningImageRepository;
-
-    @Autowired
-    DyningImageRepository dyningImageRepository;
 
     @Test
     public void insertDyning() {
@@ -56,5 +60,30 @@ public class DyningRepositoryTests {
                 dyningImageRepository.save(dyningImage);
             }
         });
+    }
+
+    // 페이징 테스트
+    @Test
+    public void testGetListDyning() {
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("dno").descending());
+        
+        Page<Object[]> result = dyningRepository.getListPage(pageable);
+        
+        System.out.println(result);
+
+        result.get().forEach(row -> {
+            Object[] arr = (Object[]) row;
+            System.out.println(Arrays.toString(arr));
+        });
+    }
+
+    // dno로 불러오는 dyningDetails
+    @Test
+    public void testDyningDetailsByBno() {
+
+        List<Object[]> result = dyningRepository.getDyningDetailsByDno(1L);
+        for(Object[] arr : result){
+            System.out.println(Arrays.toString(arr));
+        }
     }
 }

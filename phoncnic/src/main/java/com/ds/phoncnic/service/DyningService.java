@@ -1,102 +1,89 @@
 package com.ds.phoncnic.service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import com.ds.phoncnic.dto.DyningDTO;
+import com.ds.phoncnic.dto.DyningImageDTO;
+import com.ds.phoncnic.dto.PageRequestDTO;
+import com.ds.phoncnic.dto.PageResultDTO;
+import com.ds.phoncnic.entity.Dyning;
+import com.ds.phoncnic.entity.DyningImage;
+import com.ds.phoncnic.entity.Member;
+
 public interface DyningService {
 
-    // PageResultDTO<DyningDTO, Object[]> getList(PageRequestDTO pageRequestDTO);
+    Long register(DyningDTO dyningDTO);
 
-    // default Map<String, Object> dtoToEntity(DyningDTO dto) {
-    //     Map<String, Object> entityMap = new HashMap<>();
+    PageResultDTO<DyningDTO, Object[]> getList(PageRequestDTO pageRequestDTO);
 
-    //     Member member = Member.builder().id(dto.getId()).build();
+    default Map<String, Object> dtoToEntity(DyningDTO dto) {
+        Map<String, Object> entityMap = new HashMap<>();
 
-    //     Dyning dyning = Dyning.builder()
-    //             .dno(dto.getDno())
-    //             .dyningname(dto.getDyningname())
-    //             .roofdesign(dto.getRoofdesign())
-    //             .location(dto.getLocation())
-    //             .foodtype(dto.getFoodtype())
-    //             .businesshours(dto.getBusinesshours())
-    //             .comment(dto.getComment())
-    //             .backgoundimagepath(dto.getBackgoundimagepath())
-    //             .menuimagepath(dto.getMenuimagepath())
-    //             .hashtag(dto.getHashtag())
-    //             .ceoid(member)
-    //             .build();
-    //     entityMap.put("dyning", dyning);
+        Member member = Member.builder().id(dto.getId()).build();
 
-    //     List<DyningImageDTO> dyningImageDTOList = dto.getDyningImageDTOList();
+        Dyning dyning = Dyning.builder()
+                .dno(dto.getDno())
+                .dyningname(dto.getDyningname())
+                .roofdesign(dto.getRoofdesign())
+                .location(dto.getLocation())
+                .foodtype(dto.getFoodtype())
+                .businesshours(dto.getBusinesshours())
+                .comment(dto.getComment())
+                .hashtag(dto.getHashtag())
+                .ceoid(member)
+                .build();
+        entityMap.put("dyning", dyning);
 
-    //     if (dyningImageDTOList != null && dyningImageDTOList.size() > 0) {
-    //         List<DyningImage> dyningImageList = dyningImageDTOList.stream().map(DyningImageDTO -> {
-    //             DyningImage dyningImage = DyningImage.builder()
-    //                     .menuimagename(DyningImageDTO.getMenuimagename())
-    //                     .menuimagepath(DyningImageDTO.getMenuimagepath())
-    //                     .backgroundname(DyningImageDTO.getBackgroundname())
-    //                     .backgroundpath(DyningImageDTO.getBackgroundpath())
-    //                     .dno()
-    //                     .build();
+        List<DyningImageDTO> dyningImageDTOList = dto.getDyningImageDTOList();
 
-    //             return dyningImage;
-    //         }).collect(Collectors.toList());
+        if (dyningImageDTOList != null && dyningImageDTOList.size() > 0) {
+            List<DyningImage> dyningImageList = dyningImageDTOList.stream().map(DyningImageDTO -> {
+                DyningImage dyningImage = DyningImage.builder()
+                        .menuimagename(DyningImageDTO.getMenuimagename())
+                        .menuimagepath(DyningImageDTO.getMenuimagepath())
+                        .backgroundname(DyningImageDTO.getBackgroundname())
+                        .backgroundpath(DyningImageDTO.getBackgroundpath())
+                        .dyning(dyning)
+                        .build();
 
-    //         entityMap.put("dyningImageList", dyningImageList);
-    //     }
-    //     return entityMap;
-    // }
+                return dyningImage;
+            }).collect(Collectors.toList());
 
-    // default Dyning dtoToEntity(DyningDTO dyningDTO) {
+            entityMap.put("dyningImageList", dyningImageList);
+        }
+        return entityMap;
+    }
 
-    // Member member = Member.builder().id(dyningDTO.getId()).build();
+    default DyningDTO entityToDTO(Dyning dyning, List<DyningImage> dyningImages) {
+        DyningDTO dyningDTO = DyningDTO.builder()
+                .dno(dyning.getDno())
+                .dyningname(dyning.getDyningname())
+                .roofdesign(dyning.getRoofdesign())
+                .location(dyning.getLocation())
+                .foodtype(dyning.getFoodtype())
+                .businesshours(dyning.getBusinesshours())
+                .comment(dyning.getComment())
+                .hashtag(dyning.getHashtag())
+                .id(dyning.getCeoid().getId())
+                .regdate(dyning.getRegDate())
+                .moddate(dyning.getModDate())
+                .build();
 
-    // Dyning dyning = Dyning.builder()
+        List<DyningImageDTO> dyningImageDTOList = dyningImages.stream().map(dyningImage -> {
+            return DyningImageDTO.builder()
+                    .backgroundname(dyningImage.getBackgroundname())
+                    .backgroundpath(dyningImage.getBackgroundpath())
+                    .menuimagename(dyningImage.getMenuimagename())
+                    .menuimagepath(dyningImage.getMenuimagepath())
+                    .build();
+        }).collect(Collectors.toList());
 
-    // .dno(dyningDTO.getDno())
-    // .dino(dyningDTO.getDino())
-    // .dyningname(dyningDTO.getDyningname())
-    // .roofdesign(dyningDTO.getRoofdesign())
-    // .location(dyningDTO.getLocation())
-    // .foodtype(dyningDTO.getFoodtype())
-    // .businesshours(dyningDTO.getBusinesshours())
-    // .comment(dyningDTO.getComment())
-    // .backgoundimagepath(dyningDTO.getBackgoundimagepath())
-    // .menuimagepath(dyningDTO.getMenuimagepath())
-    // .hashtag(dyningDTO.getHashtag())
-    // .ceoid(member)
-    // .build();
+        dyningDTO.setDyningImageDTOList(dyningImageDTOList);
 
-    // return dyning;
-    // }
+        return dyningDTO;
+    }
 
-    // default DyningDTO entityToDTO(Dyning dyning, List<DyningImage> dyningImages)
-    // {
-    // DyningDTO dyningDTO = DyningDTO.builder()
-    // .dno(dyning.getDno())
-    // .dino(dyning.getDino())
-    // .dyningname(dyning.getDyningname())
-    // .roofdesign(dyning.getRoofdesign())
-    // .location(dyning.getLocation())
-    // .foodtype(dyning.getFoodtype())
-    // .businesshours(dyning.getBusinesshours())
-    // .comment(dyning.getComment())
-    // .backgoundimagepath(dyning.getBackgoundimagepath())
-    // .menuimagepath(dyning.getMenuimagepath())
-    // .hashtag(dyning.getHashtag())
-    // .id(dyning.getCeoid().getId())
-    // .build();
-
-    // List<DyningImageDTO> dyningImageDTOList =
-    // dyningImages.stream().map(dyningImage -> {
-    // return DyningImageDTO.builder()
-    // // .dno(dyningImage.getDyning())
-    // .backgroundname(dyningImage.getBackgroundname())
-    // .backgroundpath(dyningImage.getBackgroundpath())
-    // .menuimagename(dyningImage.getMenuimagename())
-    // .menuimagepath(dyningImage.getMenuimagepath())
-    // .build();
-    // }).collect(Collectors.toList());
-
-    // dyningDTO.setDyningImageDTOList(dyningImageDTOList);
-
-    // return dyningDTO;
-    // }
 }
