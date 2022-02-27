@@ -23,7 +23,7 @@ public class MyPageController {
     //     return "/main/mypage";
     // }
     @GetMapping("/main/mypage")
-    public void mypage(String id,Model model){
+    public void mypage(String id, Model model){
         log.info("id:"+id);
         MemberDTO memberDTO = memberService.getMyPage(id);
         model.addAttribute("memberDTO", memberDTO);
