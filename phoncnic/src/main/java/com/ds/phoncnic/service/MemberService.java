@@ -11,18 +11,10 @@ import org.springframework.stereotype.Component;
 
 public interface MemberService {
     
-    // PageResultDTO<MemberDTO, Member> getList(PageRequestDTO PageRequestDTO);
+    MemberDTO getMyPage(String id);
+    void modify(MemberDTO dto);
 
-    default Member dtoToEntity(MemberDTO memberDTO) {
-
-        Member member = Member.builder()
-        .id(memberDTO.getId())
-        .nickname(memberDTO.getNickname())
-        .password(memberDTO.getPassword())
-        .build();
-
-        return member;
-    }
+    
 
     default MemberDTO entityToDTO(Member member) {
         
@@ -37,9 +29,18 @@ public interface MemberService {
             return memberDTO;
         }
 
-    MemberDTO getMyPage(String id);
 
-    default MemberDTO entitiesToDTO(Member member, CharacterLook characterLook){
+    default Member dtoToEntity(MemberDTO memberDTO) {
+        Member member = Member.builder()
+                .id(memberDTO.getId())
+                .nickname(memberDTO.getNickname())
+                .password(memberDTO.getPassword())
+                .build();
+        return member;
+    }
+
+
+    default MemberDTO entitiesToMyPageDTO(Member member, CharacterLook characterLook){
         MemberDTO memberDTO = MemberDTO.builder()
         .id(member.getId())
         .nickname(member.getNickname())

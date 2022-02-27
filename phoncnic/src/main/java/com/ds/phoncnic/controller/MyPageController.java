@@ -6,7 +6,8 @@ import com.ds.phoncnic.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -27,6 +28,18 @@ public class MyPageController {
         MemberDTO memberDTO = memberService.getMyPage(id);
         model.addAttribute("memberDTO", memberDTO);
     }
+
+    @PostMapping("/main/mypage/modify")
+    public String modify(MemberDTO memberDTO, RedirectAttributes ra) {
+      log.info("modify post.........memberDTO:"+memberDTO.getId());
+      log.info("dto:"+ memberDTO);
+  
+      memberService.modify(memberDTO);
+      ra.addAttribute("nickname", memberDTO.getNickname());
+  
+      return "redirect:/main/mypage";
+    }
+    
    
     
 }
