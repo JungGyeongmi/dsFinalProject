@@ -13,28 +13,29 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/gallery/setting")
 public class GallerySettingController {
     @GetMapping({"/", ""})
-    public void gallerySetting(Model model) {
+    public String gallerySetting(Model model) {
 
         // model.addAttribute("ImgDTO", arg1)
+        return "/gallery/set/list";
     }
 
     @GetMapping("/register")
     public String register() {
         
-        return "gallery/setting/register";
+        return "gallery/set/register";
     }
 
     @PostMapping("/register")
     public String register(Model model) { // Ino 넘겨받기
         // Ino 넘겨받아서 repository save
         log.info("register gallery image ...... "); // Ino 추가
-        return "redirect:/gallery/setting/";
+        return "redirect:/gallery/setting"; // "/" 컨트롤러 호출하는 것임 GET으로
     }
 
     @GetMapping("/read")
     public String read() {
         log.info("register read.......");
-        return "gallery/setting/read";
+        return "gallery/set/read";
     }
 
 
@@ -49,6 +50,6 @@ public class GallerySettingController {
     public String remove() {
         // remove
         log.info("removed......");//삭제된 이미지번호
-        return "redirect:/gallery/setting/";
+        return "redirect:/gallery/setting";
     }
 }

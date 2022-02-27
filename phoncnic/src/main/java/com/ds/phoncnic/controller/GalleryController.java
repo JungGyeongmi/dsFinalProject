@@ -10,6 +10,7 @@ import com.ds.phoncnic.service.GalleryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,24 +27,33 @@ public class GalleryController {
     private final GalleryRepository galleryRepository;
     private final GalleryService galleryService;
 
+    // 선택전 url 에서는 /gallery 로 표기
+    @GetMapping({"/", ""})
+    public String galleryCrossroad() {
+
+        return "/gallery/crossgallery";
+    }
+
     //사진전 / 그림전 선택페이지
-    @GetMapping("/crossgallery")
-    public String crossgallery(){
-        return "gallery/crossgallery";
+    // @GetMapping("/crossgallery")
+    // public String crossgallery(){
+    //     return "gallery/crossgallery";
+    // }
+
+    // 그림전 및 사진전 선택
+    @GetMapping("/crossgallery/{choice}")
+    public String crossgalleryPhoto(@PathVariable("choice") String choice){
+        log.info("get"+choice+".......");
+        return "redirect:/gallery/"+choice;
     }
 
-    //사진전 선택시
-    @GetMapping("/crossgallery/photo")
-    public String crossgalleryPhoto(){
-        return "redirect:/gallery/photo";
-    }
-
-    //그림전 선택시
-    @GetMapping("/crossgallery/painting")
-    public String crossgalleryPainting(){
-        return "redirect:/gallery/painting";
-    }
-
+    /* 
+        상세페이지들은 전송해야할 데이터가 다르니까
+        합치는거는 고려해봐야할거같슈 아니면 합치고
+        삼항연산자 써서 photo일 경우에는 해당 자료값만 넘기는 식으로 해야할거 같슈
+        읽고나면 삭제 부탁드려용 ㅇ_<~*
+    */
+    
     //사진전 상세페이지
     @GetMapping("/photo")
     public String photo(){
@@ -56,7 +66,12 @@ public class GalleryController {
         return "gallery/painting";
     }
     
-    @GetMapping("/list")
+    /* 
+        테스트용 컨트롤러 
+    */
+
+    // 더미 DTO 출력 테스트 
+    @GetMapping({"/list"})
     public String list(PageRequestDTO pageRequestDTO, Model model) {
 
         model.addAttribute("result", galleryService.getList(pageRequestDTO));
@@ -65,7 +80,6 @@ public class GalleryController {
     }
 
     // 데이터 수정 테스트
-    
     @PostMapping("/list")
     public String list(String galleryCt){
         log.info("변경할 값"+galleryCt);

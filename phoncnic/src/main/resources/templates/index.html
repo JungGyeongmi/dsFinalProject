@@ -7,9 +7,31 @@
     <title>인덱스여라</title>
 </head>
 <body>
-    <a th:href="@{/}">/index</a> <br>
-    <a th:href="@{/member/list}">/member/listTest</a> <br>
-    <a th:href="@{/gallery/list}">/gallery/list</a> <br>
+    <fieldset>
+        <legend>
+            인덱스여라
+        </legend>
+        <a th:href="@{/}">/index</a> <br>
+    </fieldset>
+
+    <fieldset>
+        <legend>
+            테스트여라
+        </legend>
+        <a th:href="@{/member/list}">/member/listTest</a> <br>
+        <a th:href="@{/gallery/list}">/gallery/list</a><br>
+    </fieldset>
+    
+    <fieldset>
+        <legend>
+            갈림길이여라
+        </legend>   
+        
+        <a th:href="@{/crossroad}">/crossroad</a><br>
+        <a th:href="@{/crossroad/gallery}">/crossroad/gallery</a> <br>
+        <a th:href="@{/crossroad/cafe}">/crossroad/cafe</a> <br>
+        <a th:href="@{/crossroad/restaurant}">/crossroad/restaurant</a> <br>
+    </fieldset>
 
 </body>
 </html>
