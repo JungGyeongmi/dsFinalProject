@@ -1,22 +1,6 @@
 package com.ds.phoncnic.service;
 
-import java.util.List;
-import java.util.Map;
-
-import com.ds.phoncnic.dto.DyningDTO;
-import com.ds.phoncnic.entity.Dyning;
-import com.ds.phoncnic.entity.DyningImage;
-import com.ds.phoncnic.repository.DyningImageRepository;
-import com.ds.phoncnic.repository.DyningRepository;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 
 @SpringBootTest
 public class DyningServiceTests {
@@ -38,11 +22,5 @@ public class DyningServiceTests {
     //             .ceoid
     //     .build();
     // }
-
-    
-    
-
-   
-
     
 }

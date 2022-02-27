@@ -1,4 +1,4 @@
-package com.ds.phoncnic.controller;
+package com.ds.phoncnic.controller.dyningController;
 
 import com.ds.phoncnic.service.DyningService;
 

@@ -1,4 +1,4 @@
-package com.ds.phoncnic.controller;
+package com.ds.phoncnic.controller.galleryController;
 
 import com.ds.phoncnic.dto.PageRequestDTO;
 import com.ds.phoncnic.service.GalleryService;

@@ -1,4 +1,4 @@
-package com.ds.phoncnic.controller;
+package com.ds.phoncnic.controller.galleryController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -7,11 +7,7 @@
     <title>인덱스여라</title>
 </head>
 <body>
-    <a th:href="@{/}">/index</a> <br>
-    <a th:href="@{/member/list}">/member/listTest</a> <br>
-    <a th:href="@{/gallery/list}">/gallery/list</a> <br>
-    <a th:href="@{/dyning/restaurant/list}">/dyning/restaurant/list</a> <br>
-    <a th:href="@{/dyning/cafe/list}">/dyning/cafe/list</a> <br>
+
 
     <fieldset>
         <legend>
@@ -35,16 +31,28 @@
         
         <a th:href="@{/crossroad}">/crossroad</a><br>
         <a th:href="@{/crossroad/gallery}">/crossroad/gallery</a> <br>
-        <a th:href="@{/crossroad/cafe}">/crossroad/cafe</a> <br>
-        <a th:href="@{/crossroad/restaurant}">/crossroad/restaurant</a> <br>
+        <a th:href="@{/crossroad/dyning/cafe}">/crossroad/dyning/cafe</a> <br>
+        <a th:href="@{/crossroad/dyning/restaurant}">/crossroad/dyning/restaurant</a> <br>
     </fieldset>
 
-    <a th:href="@{/main/companyinfo}">/main/companyinfo</a>
-    <a th:href="@{/main/help}">/main/help</a>
-   <form>
-    <a th:href="@{/main/mypage(id='user1@icloud.com')}">
-       <button>user1@icloud.com님의 마이페이지로 이동</button>
-    </a>
-  </form>
+    <fieldset>
+        <legend>메인이여라</legend>
+        <a th:href="@{/main/companyinfo}">/main/companyinfo</a><br>
+        <a th:href="@{/main/help}">/main/help</a><br>
+       <form th:action="@{/main/mypage/user1@icloud.com}" method="post">
+        <button>user1@icloud.com님의 마이페이지로 이동</button>
+       </form>
+    </fieldset>
+
+    <fieldset>
+        <legend>다이닝이여라</legend>
+        <a th:href="@{/dyning/restaurant/list}">/dyning/restaurant/list</a> <br>
+        <a th:href="@{/dyning/cafe/list}">/dyning/cafe/list</a> <br>
+    </fieldset>
+    <fieldset>
+        <legend>갤러리여라</legend>
+        <a th:href="@{/gallery/photo}">/gallery/photo</a> <br>
+        <a th:href="@{/gallery/painting}">/gallery/painting</a> <br>
+    </fieldset>
 </body>
 </html>

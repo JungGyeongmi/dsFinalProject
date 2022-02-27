@@ -1,4 +1,4 @@
-package com.ds.phoncnic.controller;
+package com.ds.phoncnic.controller.galleryController;
 
 // @RestController
 // // @Log4j2

@@ -27,10 +27,18 @@ public class HomeController {
         dyning에서 restaurnat 랑 cafe가는 controller 어떻게 했는지 확인하고
         url어떻게 받으면 좋을지 생각해봐야함 
     */
-    @GetMapping("/crossroad/{choice}")
-    public String crossRoad(@PathVariable("choice") String choice) {
+    @GetMapping("/crossroad/gallery")
+    public String crossRoadToGallery() {
+        log.info("get gallery.......");
+        return "redirect:/gallery";
+    }
+
+    // 이걸 한번에 받아서 DyningController에서 변수값 분기해주는 방법은 없나
+    // dyning에서 여기서 한번 분기하고 뒤에 따라오는 변수값을 보내는 방법
+    @GetMapping("/crossroad/dyning/{choice}")
+    public String crossRoadToDyning(@PathVariable("choice") String choice) {
         log.info("get"+choice+".......");
-        return "redirect:/"+choice;
+        return "redirect:/dyning/"+choice;
     }
 
     @GetMapping("/main/companyinfo")

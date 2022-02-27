@@ -1,5 +1,7 @@
 package com.ds.phoncnic.controller;
 
+import javax.websocket.server.PathParam;
+
 import com.ds.phoncnic.dto.MemberDTO;
 import com.ds.phoncnic.service.MemberService;
 
@@ -22,12 +24,22 @@ public class MyPageController {
     // public String mypage() {
     //     return "/main/mypage";
     // }
+
     @GetMapping("/main/mypage")
-    public void mypage(String id,Model model){
+    public void mypage(String id, Model model){
         log.info("id:"+id);
         MemberDTO memberDTO = memberService.getMyPage(id);
         model.addAttribute("memberDTO", memberDTO);
     }
+
+    @PostMapping("/main/mypage/{id}")
+    public String toGoMypage(@PathParam("id") String id,Model model){
+        log.info("post "+id+"'s mypage...............");
+        model.addAttribute("id", id);
+      return "redirect:/main/mypage";
+    }
+
+
 
     @PostMapping("/main/mypage/modify")
     public String modify(MemberDTO memberDTO, RedirectAttributes ra) {
