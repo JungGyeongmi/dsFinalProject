@@ -40,7 +40,7 @@ public class MyPageController {
           model.addAttribute("id", id);
           // 1회성으로 넘기는 flash를 써도 좋을거같음
         }
-        return "redirect:/main/mypage";
+        return "/main/mypage";
     }
 
 
