@@ -22,7 +22,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = "ceoid")
+@ToString(exclude = { "ceoid", "image" })
 public class Dyning extends BaseEntity {
 
     @Id
@@ -40,6 +40,6 @@ public class Dyning extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Member ceoid;
 
-    @OneToMany(mappedBy = "dyning")
+    @OneToMany(mappedBy = "dyning", fetch = FetchType.LAZY)
     List<DyningImage> image = new ArrayList<DyningImage>();
 }

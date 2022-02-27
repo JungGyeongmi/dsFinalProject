@@ -17,15 +17,12 @@ public class DyningDTO {
     
     private long dno;
 
-    private long dino;
     private String dyningname;
     private long roofdesign;
     private String location;
     private long foodtype;
     private String businesshours;
     private String comment;
-    private String backgoundimagepath;
-    private String menuimagepath;
     private String hashtag;
 
     private LocalDateTime regdate, moddate;

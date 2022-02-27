@@ -17,13 +17,12 @@ public interface DyningService {
 
     Long register(DyningDTO dyningDTO);
 
-    PageResultDTO<DyningDTO, Object[]> getList(PageRequestDTO pageRequestDTO);
-
+    
     default Map<String, Object> dtoToEntity(DyningDTO dto) {
         Map<String, Object> entityMap = new HashMap<>();
-
+        
         Member member = Member.builder().id(dto.getId()).build();
-
+        
         Dyning dyning = Dyning.builder()
                 .dno(dto.getDno())
                 .dyningname(dto.getDyningname())
@@ -35,11 +34,11 @@ public interface DyningService {
                 .hashtag(dto.getHashtag())
                 .ceoid(member)
                 .build();
-        entityMap.put("dyning", dyning);
-
-        List<DyningImageDTO> dyningImageDTOList = dto.getDyningImageDTOList();
-
-        if (dyningImageDTOList != null && dyningImageDTOList.size() > 0) {
+                entityMap.put("dyning", dyning);
+                
+                List<DyningImageDTO> dyningImageDTOList = dto.getDyningImageDTOList();
+                
+                if (dyningImageDTOList != null && dyningImageDTOList.size() > 0) {
             List<DyningImage> dyningImageList = dyningImageDTOList.stream().map(DyningImageDTO -> {
                 DyningImage dyningImage = DyningImage.builder()
                         .menuimagename(DyningImageDTO.getMenuimagename())
@@ -57,6 +56,8 @@ public interface DyningService {
         return entityMap;
     }
 
+    PageResultDTO<DyningDTO, Object[]> getList(PageRequestDTO pageRequestDTO);
+    
     default DyningDTO entityToDTO(Dyning dyning, List<DyningImage> dyningImages) {
         DyningDTO dyningDTO = DyningDTO.builder()
                 .dno(dyning.getDno())
@@ -78,6 +79,8 @@ public interface DyningService {
                     .backgroundpath(dyningImage.getBackgroundpath())
                     .menuimagename(dyningImage.getMenuimagename())
                     .menuimagepath(dyningImage.getMenuimagepath())
+                    .dno(dyning.getDno())
+                    .id(dyning.getCeoid().getId())
                     .build();
         }).collect(Collectors.toList());
 

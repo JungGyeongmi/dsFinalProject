@@ -57,7 +57,29 @@ public class DyningServiceImpl implements DyningService {
             (List<DyningImage>) (Arrays.asList((DyningImage) arr[1]))
             ));
 
+            // result.get().forEach(row -> {
+            //     Object[] arr = (Object[]) row;
+            //     System.out.println(Arrays.toString(arr));
+            //     System.out.println(arr[0]);
+            //     System.out.println(arr[1]);
+            // });
+
         return new PageResultDTO<>(result, fn);
     }
+
+
+
+    // @Override
+        
+
+    //     System.out.println(result);
+
+    //     result.get().forEach(row -> {
+    //         Object[] arr = (Object[]) row;
+    //         System.out.println(Arrays.toString(arr));
+    //         System.out.println(arr[0]);
+    //         System.out.println(arr[1]);
+    //     });
+    
     
 }
