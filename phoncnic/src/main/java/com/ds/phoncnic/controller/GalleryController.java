@@ -1,11 +1,16 @@
 package com.ds.phoncnic.controller;
 
 import com.ds.phoncnic.dto.PageRequestDTO;
+import com.ds.phoncnic.entity.Gallery;
+import com.ds.phoncnic.entity.GalleryImage;
+import com.ds.phoncnic.repository.GalleryRepository;
+import com.ds.phoncnic.repository.MemberRepository;
 import com.ds.phoncnic.service.GalleryService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.RequiredArgsConstructor;
@@ -17,7 +22,8 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class GalleryController {
 
-    // private final MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
+    private final GalleryRepository galleryRepository;
     private final GalleryService galleryService;
 
     //사진전 / 그림전 선택페이지
@@ -59,7 +65,7 @@ public class GalleryController {
     }
 
     // 데이터 수정 테스트
-    /*
+    
     @PostMapping("/list")
     public String list(String galleryCt){
         log.info("변경할 값"+galleryCt);
@@ -83,5 +89,5 @@ public class GalleryController {
         galleryRepository.save(gallery);
         return "redirect:/gallery/list";
     }
-    */
+    
 }
