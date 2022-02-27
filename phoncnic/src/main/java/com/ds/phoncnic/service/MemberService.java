@@ -4,13 +4,11 @@ import com.ds.phoncnic.dto.MemberDTO;
 import com.ds.phoncnic.entity.CharacterLook;
 import com.ds.phoncnic.entity.Member;
 
-
 public interface MemberService {
     
     MemberDTO getMyPage(String id);
     void modify(MemberDTO dto);
 
-    
 
     default MemberDTO entityToDTO(Member member) {
         
@@ -38,17 +36,17 @@ public interface MemberService {
 
     default MemberDTO entitiesToMyPageDTO(Member member, CharacterLook characterLook){
         MemberDTO memberDTO = MemberDTO.builder()
-        .id(member.getId())
-        .nickname(member.getNickname())
-        .password(member.getPassword())
-        .regdate(member.getRegDate())
-        .moddate(member.getModDate())
-        .hair(characterLook.getHair())
-        .clothes(characterLook.getClothes())
+            .id(member.getId())
+            .nickname(member.getNickname())
+            .password(member.getPassword())
+            .regdate(member.getRegDate())
+            .moddate(member.getModDate())
+            .hair(characterLook.getHair())
+            .clothes(characterLook.getClothes())
         .build();
+
         return memberDTO;
     }
-
 
     
 }

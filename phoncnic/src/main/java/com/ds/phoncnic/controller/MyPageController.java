@@ -1,14 +1,14 @@
 package com.ds.phoncnic.controller;
 
-import javax.websocket.server.PathParam;
-
 import com.ds.phoncnic.dto.MemberDTO;
 import com.ds.phoncnic.service.MemberService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
@@ -20,23 +20,27 @@ import lombok.extern.log4j.Log4j2;
 public class MyPageController {
     private final MemberService memberService;
 
-    // @GetMapping("/main/mypage")
-    // public String mypage() {
-    //     return "/main/mypage";
-    // }
 
     @GetMapping("/main/mypage")
     public void mypage(String id, Model model){
-        log.info("id:"+id);
-        MemberDTO memberDTO = memberService.getMyPage(id);
-        model.addAttribute("memberDTO", memberDTO);
+      log.info(id);
+      // MemberDTO memberDTO = memberService.getMyPage(id);
+      // model.addAttribute("memberDTO", memberDTO);
+
     }
 
-    @PostMapping("/main/mypage/{id}")
-    public String toGoMypage(@PathParam("id") String id,Model model){
+    /* 제안 */
+    @PostMapping("/main/mypage")
+    public String toGoMypage(@RequestParam("id") String id, Model model){
         log.info("post "+id+"'s mypage...............");
         model.addAttribute("id", id);
-      return "redirect:/main/mypage";
+        if(id != null) {
+          MemberDTO memberDTO = memberService.getMyPage(id);
+          model.addAttribute("memberDTO", memberDTO);
+          model.addAttribute("id", id);
+          // 1회성으로 넘기는 flash를 써도 좋을거같음
+        }
+        return "redirect:/main/mypage";
     }
 
 

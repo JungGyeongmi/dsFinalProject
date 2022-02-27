@@ -2,6 +2,7 @@ package com.ds.phoncnic.repository;
 
 import java.util.stream.IntStream;
 
+import com.ds.phoncnic.dto.MemberDTO;
 import com.ds.phoncnic.entity.Member;
 import com.ds.phoncnic.service.MemberService;
 
@@ -9,7 +10,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import lombok.extern.log4j.Log4j2;
+
 @SpringBootTest
+@Log4j2
 public class MemberRepositoryTests {
 
     @Autowired
@@ -25,69 +29,35 @@ public class MemberRepositoryTests {
     public void insertDummies() {
 
         IntStream.rangeClosed(1, 10).forEach(
-            i-> {
-                Member member = Member.builder()
-                .id("user"+i+"@icloud.com")
-                .nickname("user"+i)
-                .password("1234")
-                .build();
+                i -> {
+                    Member member = Member.builder()
+                            .id("user" + i + "@icloud.com")
+                            .nickname("user" + i)
+                            .password("1234")
+                            .build();
 
-                memberRepository.save(member);
-            }  
+                    memberRepository.save(member);
+                }
 
         );
 
     }
 
-    
-    /* 페이징테스트 */
-    // @Test
-    // public void testList() {
-    //     PageRequestDTO pageRequestDTO = PageRequestDTO.builder().page(1).size(10).build();
+    @Test
+    public void getMypageData() {
 
-    //     PageResultDTO<MemberDTO, Member> resultDTO = memberService.getList(pageRequestDTO);
+        Object result = repository.getMypageData("user1@icloud.com");
+        Object[] arr = (Object[]) result;
+        System.out.println(arr[0]);
+        System.out.println(arr[1]);
+    }
+
+    @Test
+    public void getMypageDTO() {
         
-    //     System.out.println("PREV : "+resultDTO.isPrev());
-    //     System.out.println("NEXT : "+resultDTO.isNext());
-    //     System.out.println("TOTAL : "+resultDTO.getTotalPage());
-  
-    //     System.out.println("============================================");
+        MemberDTO memberDTO = memberService.getMyPage("user1@icloud.com");
 
-    //     for(MemberDTO memberDTO : resultDTO.getDtoList()){
-    //         System.out.println(memberDTO);
-    //     }
-    // }
+        log.info(memberDTO);
 
-    // @Test
-    // public void testGetmypage(){
-    //     String ii = "user10@icloud.com";
-    //     List<Object[]> result = repository.getmypage(ii);
-    //     for(Object[] arr : result){
-    //         System.out.println(Arrays.toString(arr));
-    //     }
-    // }
-
-
-//     @Test
-//     public void testGetmypage() {
-//         String ii = "user10@icloud.com";
-//    Object result = repository.getmypage(ii);
-//    Object[] arr = (Object[])result;
-//    System.out.println(Arrays.toString(arr));
-//  }
-
-@Test
-public void getMypageData() {
-
-    Object result = repository.getMypageData("user1@icloud.com");
-    Object[] arr = (Object[])result;
-    System.out.println(arr[0]);
-    System.out.println(arr[1]);
-
-
-   
-
-    
-
-}
+    }
 }
