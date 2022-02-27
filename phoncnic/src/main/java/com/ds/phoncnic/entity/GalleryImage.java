@@ -18,7 +18,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+<<<<<<< Updated upstream
 @ToString(exclude = "gallery")
+=======
+@Setter
+@ToString(exclude = {"gallery","artistid"})
+>>>>>>> Stashed changes
 public class GalleryImage  extends BaseEntity{
     
     @Id
@@ -31,6 +36,12 @@ public class GalleryImage  extends BaseEntity{
     // private Long gno;
     // private String artistid;
     @ManyToOne(fetch = FetchType.LAZY)
+<<<<<<< Updated upstream
+=======
+    private Member artistid;
+
+    @OneToOne(mappedBy = "image", cascade = CascadeType.ALL)
+>>>>>>> Stashed changes
     private Gallery gallery;
     
 }
