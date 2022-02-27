@@ -1,6 +1,7 @@
 package com.ds.phoncnic.controller;
 
 import com.ds.phoncnic.dto.PageRequestDTO;
+import com.ds.phoncnic.repository.GalleryRepository;
 import com.ds.phoncnic.service.MemberService;
 
 import org.springframework.stereotype.Controller;
@@ -20,11 +21,16 @@ public class TestController {
 
     private final MemberService memberService;
 
+    private final GalleryRepository galleryRepository;
+
     @GetMapping("/list")
     public String testMember(Model model, PageRequestDTO pageRequestDTO) {
         
         log.info("list.............");
         // model.addAttribute("result", memberService.getList(pageRequestDTO));
+
+        galleryRepository.deleteById(10L);
+        // galleryImageService.delteGalleryImageByGalleryGno(10L);
 
         return "/member/listTest";
     }

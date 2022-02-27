@@ -7,14 +7,41 @@
     <title>인덱스여라</title>
 </head>
 <body>
+    <fieldset>
+        <legend>
+            인덱스여라
+        </legend>
+        <a th:href="@{/}">/index</a> <br>
+    </fieldset>
+
+    <fieldset>
+        <legend>
+            테스트여라
+        </legend>
+        <a th:href="@{/member/list}">/member/listTest</a> <br>
+        <a th:href="@{/gallery/list}">/gallery/list</a><br>
+    </fieldset>
+    
+    <fieldset>
+        <legend>
+            갈림길이여라
+        </legend>   
+        
+        <a th:href="@{/crossroad}">/crossroad</a><br>
+        <a th:href="@{/crossroad/gallery}">/crossroad/gallery</a> <br>
+        <a th:href="@{/crossroad/cafe}">/crossroad/cafe</a> <br>
+        <a th:href="@{/crossroad/restaurant}">/crossroad/restaurant</a> <br>
+    </fieldset>
+
+  
     <a th:href="@{/}">/index</a>
     <a th:href="@{/member/list}">/member/listTest</a>
     <a th:href="@{/main/companyinfo}">/main/companyinfo</a>
     <a th:href="@{/main/help}">/main/help</a>
-   
+   <form>
     <a th:href="@{/main/mypage(id='user1@icloud.com')}">
        <button>user1@icloud.com님의 마이페이지로 이동</button>
     </a>
-</form>
+  </form>
 </body>
 </html>
