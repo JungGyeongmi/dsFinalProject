@@ -1,7 +1,5 @@
 package com.ds.phoncnic.dto;
 
-import java.time.LocalDateTime;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,13 +9,15 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MemberDTO {
+public class GalleryImageDTO {
+    
+    private Long gno;
+    private String imagename;
+    private String imagepath;
+
+    //member id
     private String id;
-    private String nickname;
-    private String password;
-    private LocalDateTime regdate, moddate;
-    private Long hair;
-    private Long clothes;
+
 
     
 }
