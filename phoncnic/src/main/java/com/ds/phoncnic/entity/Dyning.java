@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,4 +36,6 @@ public class Dyning extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Member ceoid;
+
+
 }
