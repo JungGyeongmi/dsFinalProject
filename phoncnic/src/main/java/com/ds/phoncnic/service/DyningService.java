@@ -79,6 +79,8 @@ public interface DyningService {
                     .backgroundpath(dyningImage.getBackgroundpath())
                     .menuimagename(dyningImage.getMenuimagename())
                     .menuimagepath(dyningImage.getMenuimagepath())
+                    .dno(dyning.getDno())
+                    .id(dyning.getCeoid().getId())
                     .build();
         }).collect(Collectors.toList());
 

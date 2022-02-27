@@ -22,7 +22,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = {"ceoid", "image"})
+@ToString(exclude = { "ceoid", "image" })
 public class Dyning extends BaseEntity {
 
     @Id
