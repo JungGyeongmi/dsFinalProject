@@ -45,7 +45,7 @@ public interface GalleryService {
         List<GalleryImageDTO> galleryImagyDTOList = galleryImages.stream()
             .map(galleryImage -> {
                 return GalleryImageDTO.builder()
-                    .id(galleryImage.getArtistid())
+                    .id(galleryImage.getArtistid().getId())
                     .gno(galleryImage.getGno())
                     .imagename(galleryImage.getImagename())
                     .imagepath(galleryImage.getImagepath())

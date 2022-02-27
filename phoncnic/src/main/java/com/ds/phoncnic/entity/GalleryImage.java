@@ -2,9 +2,11 @@ package com.ds.phoncnic.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
@@ -29,10 +31,11 @@ public class GalleryImage  extends BaseEntity{
 
     private String imagename;
     private String imagepath;
+    private boolean imagetype;
     
-    private String artistid;
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // private Member member;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Member artistid;
 
     @OneToOne(mappedBy = "image", cascade = CascadeType.REMOVE)
     private Gallery gallery;
