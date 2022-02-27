@@ -16,12 +16,14 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Member extends BaseEntity {
-   
+
     @Id
     private String id;
   
     private String nickname;
     private String password;
 
-    
+    public void changeNickname(String nickname) {
+        this.nickname = nickname;
+    }
 }
