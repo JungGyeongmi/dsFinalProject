@@ -27,7 +27,7 @@ public class TestController {
     public String testMember(Model model, PageRequestDTO pageRequestDTO) {
         
         log.info("list.............");
-        model.addAttribute("result", memberService.getList(pageRequestDTO));
+        // model.addAttribute("result", memberService.getList(pageRequestDTO));
 
         galleryRepository.deleteById(10L);
         // galleryImageService.delteGalleryImageByGalleryGno(10L);
