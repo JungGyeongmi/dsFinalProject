@@ -1,7 +1,6 @@
 package com.ds.phoncnic.service;
 
 import com.ds.phoncnic.dto.MemberDTO;
-import com.ds.phoncnic.dto.MyPageDTO;
 import com.ds.phoncnic.dto.PageRequestDTO;
 import com.ds.phoncnic.dto.PageResultDTO;
 import com.ds.phoncnic.entity.CharacterLook;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 public interface MemberService {
     
-    PageResultDTO<MemberDTO, Member> getList(PageRequestDTO PageRequestDTO);
+    // PageResultDTO<MemberDTO, Member> getList(PageRequestDTO PageRequestDTO);
 
     default Member dtoToEntity(MemberDTO memberDTO) {
 
@@ -37,6 +36,21 @@ public interface MemberService {
 
             return memberDTO;
         }
+
+    MemberDTO getMyPage(String id);
+
+    default MemberDTO entitiesToDTO(Member member, CharacterLook characterLook){
+        MemberDTO memberDTO = MemberDTO.builder()
+        .id(member.getId())
+        .nickname(member.getNickname())
+        .password(member.getPassword())
+        .regdate(member.getRegDate())
+        .moddate(member.getModDate())
+        .hair(characterLook.getHair())
+        .clothes(characterLook.getClothes())
+        .build();
+        return memberDTO;
+    }
 
 
     

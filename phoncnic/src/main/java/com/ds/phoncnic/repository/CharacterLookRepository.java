@@ -10,12 +10,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface CharacterLookRepository extends JpaRepository<CharacterLook,Long>{
-   @Query(value="select * from character_look ch where ch.member_id = :id",
-   nativeQuery = true)
-    Optional<CharacterLook> getCharacterLook(String id);
-
-    @Query(value="select id,nickname,hair,clothes from character_look ch left join member m on ch.member_id=m.id where m.id=:id",nativeQuery = true)
+    //인자 id에 해당하는 id,nickname,hair,clothes 데이터를 가져옴
+    @Query("select m,ch from Member m left join CharacterLook ch on m = ch.member where m.id=:id")
     Object getMypageData(String id);
+//    @Query(value="select * from character_look ch where ch.member_id = :id",
+//    nativeQuery = true)
+//     Optional<CharacterLook> getCharacterLook(String id);
+
+    // @Query("select m,ch from CharacterLook ch left join Member m on ch.m.id=m.id where m.id=:id")
+    // Object getMypageData(String id);
 
     // @Query("select m.id,nickname,hair,clothes from Member m join  CharacterLook ch on m.id=ch.id where m.id=:id")
     // Object getCharacterLook(String id);

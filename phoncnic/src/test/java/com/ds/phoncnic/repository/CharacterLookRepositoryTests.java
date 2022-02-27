@@ -29,8 +29,8 @@ public class CharacterLookRepositoryTests {
                 .id("user"+i+"@icloud.com").build();
 
                 CharacterLook characterLook = CharacterLook.builder()
-                .hair("헤어"+Integer.toString(i))
-                .clothes("의상"+Integer.toString(i))
+                .hair(i)
+                .clothes(i)
                 .member(member)
                 .build();
 
@@ -50,20 +50,20 @@ public class CharacterLookRepositoryTests {
       
     // }
 
-    @Test
-    public void testGetCharacterLook(){
-        Optional<CharacterLook> result = repository.getCharacterLook("user10@icloud.com");
-        CharacterLook characterLook = result.get();
-        System.out.println(characterLook.getMember().getId());
-        System.out.println(characterLook.getHair());
-        System.out.println(characterLook.getClothes());
-    }
+    // @Test
+    // public void testGetCharacterLook(){
+    //     Optional<CharacterLook> result = repository.getCharacterLook("user10@icloud.com");
+    //     CharacterLook characterLook = result.get();
+    //     System.out.println(characterLook.getMember().getId());
+    //     System.out.println(characterLook.getHair());
+    //     System.out.println(characterLook.getClothes());
+    // }
 
-    @Test
-    public void TestGetMyPage() {
-   Object result = repository.getMypageData("user10@icloud.com");
-   Object[] arr = (Object[])result;
-   System.out.println(Arrays.toString(arr));
+//     @Test
+//     public void TestGetMyPage() {
+//    Object result = repository.getMypageData("user10@icloud.com");
+//    Object[] arr = (Object[])result;
+//    System.out.println(Arrays.toString(arr));
  }
 
 //     @Test
@@ -82,4 +82,4 @@ public class CharacterLookRepositoryTests {
 
 //  }
 
-}
+// }

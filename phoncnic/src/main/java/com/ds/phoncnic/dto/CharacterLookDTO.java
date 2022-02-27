@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class MyPageDTO {
-    private String id;
-    private String nickname;
+public class CharacterLookDTO {
     private String hair;
     private String clothes;
 }
