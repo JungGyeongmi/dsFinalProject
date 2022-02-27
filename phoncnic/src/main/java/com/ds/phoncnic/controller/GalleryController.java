@@ -27,10 +27,10 @@ public class GalleryController {
     private final GalleryRepository galleryRepository;
     private final GalleryService galleryService;
 
-    // 선택전 url 에서는 /gallery 로 표기
+    // 선택전 url 에서는 /phoncnic/gallery 로 표기
     @GetMapping({"/", ""})
     public String galleryCrossroad() {
-
+        log.info("GET crossgallery......");
         return "/gallery/crossgallery";
     }
 

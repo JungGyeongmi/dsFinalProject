@@ -21,36 +21,14 @@ public class HomeController {
     }
 
 
-    // 생각해보니까 이게 다 기존 url이랑 달라서 redirect해줘야 할듓..
-    // 아닐시 수정하겠슴
-
+    /*
+        dyning에서 restaurnat 랑 cafe가는 controller 어떻게 했는지 확인하고
+        url어떻게 받으면 좋을지 생각해봐야함 
+    */
     @GetMapping("/crossroad/{choice}")
     public String crossRoad(@PathVariable("choice") String choice) {
         log.info("get"+choice+".......");
-        return "redirect:/"+choice+"/";
+        return "redirect:/"+choice;
     }
-
-    // @RequestMapping("/crossroad")
-    // @GetMapping("/restaurant")
-    // public String toRestaurant() {
-    //     log.info("restaurant.......");
-    //     return "redirect:/dyning/restaurant";
-    // }
-
-    // @RequestMapping("/crossroad")
-    // @GetMapping("/cafe")
-    // public String toCafe() {
-    //     log.info("cafe.......");
-    //     return "redirect:/dyning/cafe";
-    // }
-
-    // // REGISTER PAGE
-    // @RequestMapping("/register")
-    // @GetMapping("/gallery")
-    // public String toRegisterGallery() {
-    //     log.info("gallery register.......");
-    //     return "redirect:/gallery/register";
-    // }
-
 
 }
