@@ -10,6 +10,11 @@
 
 <body>
     <h1>cafe</h1>
+    <ul>
+        <li th:each="dto : ${result.dtoList}" th:if="${dto.foodtype = 1} ">
+            [[${dto}]]
+        </li>
+    </ul>
 </body>
 
 </html>

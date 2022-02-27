@@ -11,9 +11,9 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface DyningRepository extends JpaRepository<Dyning, Long>{
     
-    @Query(value = "select * from dyning di LEFT OUTER JOIN dyning_image d ON di.dno= d.dyning_dno", nativeQuery = true)
+    @Query("select di, d from Dyning di LEFT OUTER JOIN DyningImage d ON di = d.dyning")
     Page<Object[]> getListPage(Pageable pageable);
 
-    @Query(value = "select * from dyning di LEFT OUTER JOIN dyning_image d ON di.dno= d.dyning_dno where d.dyning_dno=1", nativeQuery = true)
-    List<Object[]> getDyningDetailsByDno(long dno);
+    // @Query("select di, d from Dyning di LEFT OUTER JOIN DyningImage d ON di = d.dyning where d.dyning_dno=1")
+    // List<Object[]> getDyningDetailsByDno(long dno);
 }

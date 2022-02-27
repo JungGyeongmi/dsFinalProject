@@ -74,16 +74,19 @@ public class DyningRepositoryTests {
         result.get().forEach(row -> {
             Object[] arr = (Object[]) row;
             System.out.println(Arrays.toString(arr));
+            System.out.println(arr[0]);
+            System.out.println(arr[1]);
         });
     }
 
     // dno로 불러오는 dyningDetails
-    @Test
-    public void testDyningDetailsByBno() {
+    // @Test
+    // public void testDyningDetailsByBno() {
 
-        List<Object[]> result = dyningRepository.getDyningDetailsByDno(1L);
-        for(Object[] arr : result){
-            System.out.println(Arrays.toString(arr));
-        }
-    }
+    //     List<Object[]> result = dyningRepository.getDyningDetailsByDno(1L);
+    //     for(Object[] arr : result){
+    //         System.out.println(Arrays.toString(arr));
+    //     }
+    // }
+
 }

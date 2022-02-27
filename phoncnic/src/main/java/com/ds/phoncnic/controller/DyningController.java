@@ -1,5 +1,8 @@
 package com.ds.phoncnic.controller;
 
+import com.ds.phoncnic.dto.PageRequestDTO;
+import com.ds.phoncnic.service.DyningService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,24 +17,22 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/dyning")
 public class DyningController {
 
-    // private final DyningService dyningService;
+    private final DyningService dyningService;
 
     // 음식점 거리 페이지
     @GetMapping("/restaurant/list")
-    public String restaurantList(Model model) {
+    public void restaurantList(Model model, PageRequestDTO pageRequestDTO) {
         log.info("restaurant list...........");
-        // model.addAttribute("result", dyningService.getList(pageRequestDTO));
+        model.addAttribute("result", dyningService.getList(pageRequestDTO));
 
-        return "restaurant/list";
     }
 
     // 카페 거리 페이지
     @GetMapping("/cafe/list")
-    public String cafeList(Model model) {
+    public void cafeList(Model model, PageRequestDTO pageRequestDTO) {
         log.info("cafe list.................");
-        // model.addAttribute("result", dyningService.getList(pageRequestDTO));
+        model.addAttribute("result", dyningService.getList(pageRequestDTO));
 
-        return "cafe/list";
     }
 
 
