@@ -1,10 +1,7 @@
 package com.ds.phoncnic.controller;
 
 import com.ds.phoncnic.dto.PageRequestDTO;
-import com.ds.phoncnic.entity.Gallery;
 import com.ds.phoncnic.repository.GalleryRepository;
-import com.ds.phoncnic.service.GalleryImageService;
-import com.ds.phoncnic.service.GalleryService;
 import com.ds.phoncnic.service.MemberService;
 
 import org.springframework.stereotype.Controller;
@@ -24,7 +21,6 @@ public class TestController {
 
     private final MemberService memberService;
 
-    private final GalleryImageService galleryImageService;
     private final GalleryRepository galleryRepository;
 
     @GetMapping("/list")

@@ -9,7 +9,6 @@ import com.ds.phoncnic.dto.PageRequestDTO;
 import com.ds.phoncnic.dto.PageResultDTO;
 import com.ds.phoncnic.entity.Gallery;
 import com.ds.phoncnic.entity.GalleryImage;
-import com.ds.phoncnic.repository.GalleryImageRepository;
 import com.ds.phoncnic.repository.GalleryRepository;
 
 import org.springframework.data.domain.Page;
