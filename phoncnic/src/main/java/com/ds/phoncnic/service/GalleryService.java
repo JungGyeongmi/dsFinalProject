@@ -22,8 +22,6 @@ public interface GalleryService {
         .gno(galleryDTO.getGno())
         .title(galleryDTO.getTitle())
         .content(galleryDTO.getContent())
-        .imagetype(galleryDTO.isImagetype())
-        .imagepath(galleryDTO.getImagepath())
         .artistid(
             Member.builder()
             .id(galleryDTO.getId())
@@ -45,7 +43,7 @@ public interface GalleryService {
         List<GalleryImageDTO> galleryImagyDTOList = galleryImages.stream()
             .map(galleryImage -> {
                 return GalleryImageDTO.builder()
-                    .id(galleryImage.getArtistid())
+                    .id(galleryImage.getArtistid().getId())
                     .gno(galleryImage.getGno())
                     .imagename(galleryImage.getImagename())
                     .imagepath(galleryImage.getImagepath())
@@ -56,8 +54,6 @@ public interface GalleryService {
             .gno(gallery.getGno())
             .title(gallery.getTitle())
             .content(gallery.getContent())
-            .imagetype(gallery.isImagetype())
-            .imagepath(gallery.getImagepath())
             .id(gallery.getArtistid().getId())
             .regDate(gallery.getRegDate())
             .modDate(gallery.getModDate())

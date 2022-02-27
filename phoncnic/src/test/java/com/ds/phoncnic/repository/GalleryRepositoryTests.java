@@ -23,9 +23,9 @@ public class GalleryRepositoryTests {
     GalleryImageRepository galleryImageRepository;
 
     @Test
-    public void insertDummise(){
+    public void insertDummise(){        IntStream.rangeClosed(1, 10).forEach(i->{
 
-        IntStream.rangeClosed(1, 10).forEach(i->{
+
             boolean rand = ((int)(Math.random()*2))!=0;
 
             Member member = 
@@ -37,8 +37,9 @@ public class GalleryRepositoryTests {
             GalleryImage galleryImage = GalleryImage.builder()
                 .imagename("imagename"+i)
                 .imagepath(i+"imagepath.jpg")
-                .artistid(member.getId())
-            .build(); 
+                .imagetype(rand)
+                .artistid(member)
+                .build(); 
             
             Gallery gallery = Gallery.builder()
                 .title(i+"title")

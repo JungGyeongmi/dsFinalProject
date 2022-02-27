@@ -47,12 +47,6 @@ public class GalleryController {
         return "redirect:/gallery/"+choice;
     }
 
-    /* 
-        상세페이지들은 전송해야할 데이터가 다르니까
-        합치는거는 고려해봐야할거같슈 아니면 합치고
-        삼항연산자 써서 photo일 경우에는 해당 자료값만 넘기는 식으로 해야할거 같슈
-        읽고나면 삭제 부탁드려용 ㅇ_<~*
-    */
     
     //사진전 상세페이지
     @GetMapping("/photo")
@@ -80,28 +74,28 @@ public class GalleryController {
     }
 
     // 데이터 수정 테스트
-    @PostMapping("/list")
-    public String list(String galleryCt){
-        log.info("변경할 값"+galleryCt);
+    // @PostMapping("/list")
+    // public String list(String galleryCt){
+    //     log.info("변경할 값"+galleryCt);
         
-        GalleryImage galleryImage = GalleryImage.builder()
-            .gno(8L)
-            .artistid("user10@icloud.com")
-            .imagename("나룽나룽")
-            .imagepath("나룽.png")
-            .build();
+    //     GalleryImage galleryImage = GalleryImage.builder()
+    //         .gno(8L)
+    //         .artistid("user10@icloud.com")
+    //         .imagename("나룽나룽")
+    //         .imagepath("나룽.png")
+    //         .build();
 
-        Gallery gallery = Gallery.builder()
-        .gno(8L)
-        // .image(galleryImage)
-        .content(galleryCt)
-        .imagepath("나룽.png")
-        .title("나룽전")
-        .artistid(memberRepository.findById("user10@icloud.com").get())
-        .build();
-        gallery.setImage(galleryImage);
-        galleryRepository.save(gallery);
-        return "redirect:/gallery/list";
-    }
+    //     Gallery gallery = Gallery.builder()
+    //     .gno(8L)
+    //     // .image(galleryImage)
+    //     .content(galleryCt)
+    //     .imagepath("나룽.png")
+    //     .title("나룽전")
+    //     .artistid(memberRepository.findById("user10@icloud.com").get())
+    //     .build();
+    //     gallery.setImage(galleryImage);
+    //     galleryRepository.save(gallery);
+    //     return "redirect:/gallery/list";
+    // }
     
 }
