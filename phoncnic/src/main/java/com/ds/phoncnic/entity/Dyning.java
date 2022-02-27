@@ -28,8 +28,7 @@ public class Dyning extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long dno;
-  
-    private long dino;
+
     private String dyningname;
     private long roofdesign;
     private String location;
@@ -43,5 +42,4 @@ public class Dyning extends BaseEntity {
 
     @OneToMany(mappedBy = "dyning")
     List<DyningImage> image = new ArrayList<DyningImage>();
-
 }
