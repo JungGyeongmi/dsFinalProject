@@ -25,7 +25,6 @@ public class MyPageController {
       log.info(id);
       // MemberDTO memberDTO = memberService.getMyPage(id);
       // model.addAttribute("memberDTO", memberDTO);
-
     }
 
     /* 제안 */
