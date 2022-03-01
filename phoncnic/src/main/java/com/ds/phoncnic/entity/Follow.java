@@ -24,6 +24,7 @@ public class Follow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long fno;
+    private boolean followcheck; 
     private String followid;
 
     @ManyToOne

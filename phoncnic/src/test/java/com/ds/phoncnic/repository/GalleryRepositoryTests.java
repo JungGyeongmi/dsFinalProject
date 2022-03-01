@@ -1,7 +1,10 @@
 package com.ds.phoncnic.repository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
+import com.ds.phoncnic.entity.Emoji;
 import com.ds.phoncnic.entity.Gallery;
 import com.ds.phoncnic.entity.GalleryImage;
 import com.ds.phoncnic.entity.Member;
@@ -9,6 +12,8 @@ import com.ds.phoncnic.entity.Member;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 public class GalleryRepositoryTests {
@@ -18,14 +23,33 @@ public class GalleryRepositoryTests {
 
     @Autowired
     MemberRepository memberRepository;
+    
+    @Autowired
+    EmojiRepository emojiRepository;
 
     @Autowired
     GalleryImageRepository galleryImageRepository;
 
+    @Transactional
     @Test
-    public void insertDummise(){        IntStream.rangeClosed(1, 10).forEach(i->{
+    @Commit
+    public void insertDummise(){        
+        IntStream.rangeClosed(1, 10).forEach(i->{
 
             boolean rand = ((int)(Math.random()*2))!=0;
+            
+            List<Integer> randmember = new ArrayList<>();
+
+            while (randmember.size()!=10) {
+                int inputrandomNumber = (int) (Math.random() * 10) + 1;
+                for (int k = 0; k < 10; k++) {
+                    if (!randmember.contains(inputrandomNumber)) {
+                        randmember.add(inputrandomNumber);
+                        break;
+                    }
+    
+                }
+            }
 
             Member member = 
                 Member.builder().id(
@@ -45,6 +69,21 @@ public class GalleryRepositoryTests {
                 .content(i+"content")
                 .artistid(member)
             .build();
+
+            int ra = (int)(Math.random()*5)+1;
+
+            for(int j = 0; j<ra; j++){
+                member = 
+                    Member.builder().id("user"+randmember.get(j)+"@icloud.com")
+                .build();
+
+                Emoji emoji = Emoji.builder()
+                    .gallery(gallery)
+                    .emojitype((int)(Math.random()*4)+"")
+                    .member(member)
+                .build();
+                emojiRepository.save(emoji);
+            }
             
             gallery.setImage(galleryImage);
             galleryImage.setGallery(gallery);

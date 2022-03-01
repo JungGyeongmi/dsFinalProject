@@ -1,7 +1,5 @@
 package com.ds.phoncnic.repository;
 
-import java.util.List;
-
 import com.ds.phoncnic.entity.Dyning;
 
 import org.springframework.data.domain.Page;
