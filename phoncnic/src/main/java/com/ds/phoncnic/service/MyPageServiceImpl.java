@@ -2,27 +2,36 @@ package com.ds.phoncnic.service;
 
 import java.util.Optional;
 
-import com.ds.phoncnic.dto.MemberDTO;
-import com.ds.phoncnic.entity.CharacterLook;
+import com.ds.phoncnic.dto.MyPageDTO;
+import com.ds.phoncnic.entity.CharacterLookInfo;
 import com.ds.phoncnic.entity.Member;
-import com.ds.phoncnic.repository.CharacterLookRepository;
+import com.ds.phoncnic.repository.CharacterLookInfoRepository;
 import com.ds.phoncnic.repository.MemberRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 
 @Service
 @RequiredArgsConstructor
-public class MemberServiceImpl implements MemberService {
+public class MyPageServiceImpl implements MyPageService {
     @Autowired
-    private CharacterLookRepository characterLookRepository;
+    private CharacterLookInfoRepository CharacterLookInfoRepository;
 
     @Autowired
     private MemberRepository memberRepository;
     
+    @Override
+    public MyPageDTO getMyPage(String id) {
+    CharacterLookInfo chin = CharacterLookInfoRepository.getCharacterImgs(id);    
+    Optional<Member> memberOptional = memberRepository.findById(id);
+    Member member = memberOptional.get();
+    // return entitiesToDTO((String)arr[1], (String)arr[2], (Long)arr[3],(Long)arr[4]);
+      return entitiesToMyPageDTO(member ,chin);
+    
+  }
+
     // @Override
     // public PageResultDTO<MemberDTO, Member> getList(PageRequestDTO pageRequestDTO){
     //     //원하는 페이지 번호와 갯수를 정렬과 합께 초기화
@@ -37,31 +46,6 @@ public class MemberServiceImpl implements MemberService {
         
     // }
 
-    @Override
-  public MemberDTO getMyPage(String id) {
-    Object result = characterLookRepository.getMypageData(id);    
-    Object[] arr = (Object[])result;
-    // return entitiesToDTO((String)arr[1], (String)arr[2], (Long)arr[3],(Long)arr[4]);
-    return entitiesToMyPageDTO((Member)arr[0],(CharacterLook)arr[1]);
-    
-  }
 
-
-  @Override
-    public void modify(MemberDTO memberDTO) {
-        //데이터를 불러올때 옵샤날~~~~
-        Optional<Member> result = memberRepository.findById(memberDTO.getId());
-        //수정시에는 반드시 먼저 값을 불러오고 나서 불러올 수 있다.
-        if(result.isPresent()){
-            Member member = result.get();
-            member.changeNickname(memberDTO.getId());
-
-            memberRepository.save(member);
-        }
-
-    }
-  
-    
-   
-        
+     
 }

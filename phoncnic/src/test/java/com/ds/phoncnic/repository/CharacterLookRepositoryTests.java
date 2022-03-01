@@ -1,11 +1,11 @@
 package com.ds.phoncnic.repository;
 
 
-import java.util.Arrays;
-import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.IntStream;
 
 import com.ds.phoncnic.entity.CharacterLook;
+import com.ds.phoncnic.entity.CharacterLookInfo;
 import com.ds.phoncnic.entity.Member;
 
 import org.junit.jupiter.api.Test;
@@ -21,65 +21,52 @@ public class CharacterLookRepositoryTests {
     @Autowired
     CharacterLookRepository repository;
 
+    @Autowired
+    private CharacterLookInfoRepository characterLookInforepository;
+    //ChracterLook 더미
     @Test
-    public void insertDummies() {
-        IntStream.rangeClosed(1, 10).forEach(
-            i-> {
-                Member member = Member.builder()
-                .id("user"+i+"@icloud.com").build();
+    public void insertDummies(){
 
-                CharacterLook characterLook = CharacterLook.builder()
-                .hair(i)
-                .clothes(i)
-                .member(member)
-                .build();
+        IntStream.rangeClosed(1, 10).forEach(i->{
+            Long ch = ((long)(Math.random()*3+1));
 
-                repository.save(characterLook);
-            }  
+            Member member = Member.builder().id("user"+i+"@icloud.com").build();
+            CharacterLookInfo characterLookinfo = CharacterLookInfo.builder().chno(ch).build();
 
-        );
+            CharacterLook characterLook = CharacterLook.builder()
+            .member(member)
+            .characterLookinfo(characterLookinfo)
+            .hairname("hair"+ch)
+            .clothesname("clothes"+ch)
+            .build();
+            repository.save(characterLook);
 
+
+        });
     }
 
-    // @Test
-    // public  void lookData() {
-    //     List<Object[]> result = repository.mypageCharacterLook("user10@icloud.com");
-    //     for(Object[] arr : result){
-    //         System.out.println(Arrays.toString(arr));
-    //     }
-      
-    // }
+    //ChracterLookInfo 더미
+    @Test
+    public void insertChracterimg(){
 
-    // @Test
-    // public void testGetCharacterLook(){
-    //     Optional<CharacterLook> result = repository.getCharacterLook("user10@icloud.com");
-    //     CharacterLook characterLook = result.get();
-    //     System.out.println(characterLook.getMember().getId());
-    //     System.out.println(characterLook.getHair());
-    //     System.out.println(characterLook.getClothes());
-    // }
+        IntStream.rangeClosed(1, 3).forEach(i->{
+            CharacterLookInfo characterLookinfo = CharacterLookInfo.builder()
+            .hairname("hair"+i)
+            .hairpath(UUID.randomUUID().toString())
+            .clothesname("clothes"+i)
+            .clothespath(UUID.randomUUID().toString())
+            .build();
+            characterLookInforepository.save(characterLookinfo);
+        });
+    }
 
-//     @Test
-//     public void TestGetMyPage() {
-//    Object result = repository.getMypageData("user10@icloud.com");
-//    Object[] arr = (Object[])result;
-//    System.out.println(Arrays.toString(arr));
- }
+    @Test
+    public void TestGetCharacterLook() {
+    
+    CharacterLookInfo result = characterLookInforepository.getCharacterImgs("user1@icloud.com");
+    System.out.println(result.getHairpath());
+    System.out.println(result.getClothespath());
 
-//     @Test
-//     public void TestGetCharacterLook() {
-//         String ii ="user10@icloud.com";
-//    Object result = repository.getCharacterLook(ii);
-//    Object[] arr = (Object[])result;
-//    System.out.println(Arrays.toString(arr));
-//  }
-
-//     @Test
-//     public void testMypage() {
-//         String ii ="user10@icloud.com";
-//         Object result =repository.getmypage(ii);
-//             System.out.println(result);
-
-//  }
-
-// }
+    
+    }
+}

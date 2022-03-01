@@ -1,11 +1,9 @@
 package com.ds.phoncnic.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,19 +16,19 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString (exclude = {"member", "characterLookinfo"})
-public class CharacterLook extends BaseEntity{
- 
+@ToString 
+public class CharacterLookInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long lno;
+    private Long chno;
 
     private String hairname;
+    private String hairpath;
     private String clothesname;
+    private String clothespath;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Member member;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private CharacterLookInfo characterLookinfo;
+
+    
+
 }

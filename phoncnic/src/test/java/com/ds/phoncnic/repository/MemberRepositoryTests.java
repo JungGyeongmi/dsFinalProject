@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import com.ds.phoncnic.entity.Member;
-import com.ds.phoncnic.service.MemberService;
+import com.ds.phoncnic.service.MyPageService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class MemberRepositoryTests {
     MemberRepository memberRepository;
 
     @Autowired
-    MemberService memberService;
+    MyPageService memberService;
 
     @Test
     public void insertDummies() {
@@ -77,18 +77,13 @@ public class MemberRepositoryTests {
 //    System.out.println(Arrays.toString(arr));
 //  }
 
-@Test
-public void getMypageData() {
+// @Test
+// public void getMypageData() {
 
-    Object result = repository.getMypageData("user1@icloud.com");
-    Object[] arr = (Object[])result;
-    System.out.println(arr[0]);
-    System.out.println(arr[1]);
+//     Object result = repository.getMypageData("user1@icloud.com");
+//     Object[] arr = (Object[])result;
+//     System.out.println(arr[0]);
+//     System.out.println(arr[1]);
+// }
 
-
-   
-
-    
-
-}
 }

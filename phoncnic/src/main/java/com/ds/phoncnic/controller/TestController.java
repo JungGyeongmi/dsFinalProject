@@ -1,7 +1,7 @@
 package com.ds.phoncnic.controller;
 
 import com.ds.phoncnic.dto.PageRequestDTO;
-import com.ds.phoncnic.service.MemberService;
+import com.ds.phoncnic.service.MyPageService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +18,7 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/member")
 public class TestController {
 
-    private final MemberService memberService;
+    private final MyPageService memberService;
 
     @GetMapping("/list")
     public String testMember(Model model, PageRequestDTO pageRequestDTO) {

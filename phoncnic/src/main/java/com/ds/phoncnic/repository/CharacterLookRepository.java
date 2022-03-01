@@ -2,17 +2,21 @@ package com.ds.phoncnic.repository;
 
 
 import java.util.List;
-import java.util.Optional;
 
 import com.ds.phoncnic.entity.CharacterLook;
+import com.ds.phoncnic.entity.CharacterLookInfo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface CharacterLookRepository extends JpaRepository<CharacterLook,Long>{
+
+   
+}
+
     //인자 id에 해당하는 id,nickname,hair,clothes 데이터를 가져옴
-    @Query("select m,ch from Member m left join CharacterLook ch on m = ch.member where m.id=:id")
-    Object getMypageData(String id);
+    // @Query("select m,ch from Member m left join CharacterLook ch on m = ch.member where m.id=:id")
+    // Object getMypageData(String id);
 //    @Query(value="select * from character_look ch where ch.member_id = :id",
 //    nativeQuery = true)
 //     Optional<CharacterLook> getCharacterLook(String id);
@@ -38,4 +42,10 @@ public interface CharacterLookRepository extends JpaRepository<CharacterLook,Lon
 
 // @Query("select m.id,nickname,hair,clothes from Member m join  CharacterLook ch on m.id=ch.id where m.id=:id")
 //     Object[] getmypage(@Param("id") String id);
-}
+
+// @Query("select chin from characterLookInfo chin where chin.lno = (select lno from CharacterLook c where c.member =:id  ) ") 
+// Object getCharacterLookImg(String id);
+// @Query("select c, ci from characterLook c left outer join characterLookInfo ci on ci.characterLook = c where c.id =:id group by ci") 
+// Object getCharacterLookImg(String id);
+
+
